@@ -1,0 +1,41 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+<div class="background-image-holder" style="background: url({{ asset('bundles/template/img/home2.jpg') }});margin-top: 55px">
+    <img alt="image" class="background-image" src="{{ asset('bundles/template/img/home2.jpg') }}" style="display: none;">
+</div>
+<div class="container v-align-transform" style="-webkit-transform:translate3d(0, 1%, 0)!important;">
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <div class="feature bordered text-center">
+                <h4 class="uppercase">Connectez-vous</h4>
+
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+<form action="{{ path("fos_user_security_check") }}" method="post">
+    {% if csrf_token %}
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    {% endif %}
+
+    <label for="username">{{ 'security.login.username'|trans }}</label>
+    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+
+    <label for="password">{{ 'security.login.password'|trans }}</label>
+    <input type="password" id="password" name="_password" required="required" />
+
+    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+
+    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+</form>
+
+                <p class="mb0">Vous avez oublié votre Mot de passe,
+                    <a href="{{ path('fos_user_resetting_request') }}">Forgot password?</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--end of row-->
+</div>

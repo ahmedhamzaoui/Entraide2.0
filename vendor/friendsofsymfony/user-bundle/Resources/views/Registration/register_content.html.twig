@@ -1,0 +1,70 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="background-image-holder" style="background: url({{ asset('bundles/template/img/home2.jpg') }});margin-top: 55px">
+    <img alt="image" class="background-image" src="{{ asset('bundles/template/img/home2.jpg') }}" style="display: none;">
+</div>
+<div class="container v-align-transform" style="-webkit-transform:translate3d(0, 1%, 0)!important;">
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <div class="feature bordered text-center">
+                <h4 class="uppercase">Inscription</h4>
+
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'text-left'}}) }}
+<div class="col-md-12">
+<div class="col-md-6">
+                <div class="full-width">
+                    {{ form_widget(form.nom,{ 'attr' : {'class':'form-control','id':'nom','placeholder':'Nom'}}) }}
+                    {{form_errors(form.nom)}}
+                </div>
+                <div class="full-width">
+                    {{ form_widget(form.prenom,{ 'attr' : {'class':'form-control','id':'prenom','placeholder':'prenom'}}) }}
+                    {{form_errors(form.prenom)}}
+                </div>
+                <div class="full-width">
+                    {{ form_widget(form.telephone,{ 'attr' : {'class':'form-control','id':'telephone','placeholder':'telephone'}}) }}
+                    {{form_errors(form.telephone)}}
+                </div>
+                <div class="full-width">
+                    {{ form_widget(form.photo,{ 'attr' : {'class':'form-control','id':'photo','placeholder':'photo'}}) }}
+                    {{form_errors(form.photo)}}
+                </div>
+                <div class="full-width">
+                    {{ form_widget(form.sexe,{ 'attr' : {'class':'form-control','id':'sexe','placeholder':'sexe'}}) }}
+                    {{form_errors(form.sexe)}}
+                </div>
+</div>
+    <div class="col-md-6">
+                <div class="full-width">
+                    {{ form_widget(form.email,{ 'attr' : {'class':'form-control','id':'email','placeholder':'email'}}) }}
+                    {{form_errors(form.email)}}
+                </div>
+                <div class="full-width">
+                    {{ form_widget(form.username,{ 'attr' : {'class':'form-control','id':'username','placeholder':"Nom d'utilisateur"}}) }}
+                    {{form_errors(form.username)}}
+                </div>
+                <div class="full-width">
+                    {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control','placeholder':'Mot de passe'} }) }}
+                    {{form_errors(form.plainPassword.first)}}
+                </div>
+                <div class="full-width">
+                    {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control','id':'password2','placeholder':'Confirmation Mot de passe'} }) }}
+                    {{form_errors(form.plainPassword.second)}}
+                </div>
+
+                {{ form_widget(form) }}
+
+    </div>
+    <div>
+        <input class="" type="submit" value="{{ 'registration.submit'|trans }}" />
+    </div>
+</div>
+{{ form_end(form) }}
+
+                <p class="mb0">Bienvenue,
+                    <a href="{{ path('fos_user_security_login') }}">Login</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--end of row-->
+</div>
