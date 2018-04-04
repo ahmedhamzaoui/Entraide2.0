@@ -1,0 +1,9 @@
+evenement_e:
+    resource: "@EvenementBundle/Resources/config/routing/evenement.yml"
+    prefix:   /e
+
+evenement_homepage:
+    path:     /home
+    defaults: { _controller: EvenementBundle:Default:index }
+
+

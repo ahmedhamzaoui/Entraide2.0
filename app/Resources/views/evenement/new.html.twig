@@ -1,0 +1,264 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+   <style>
+       #map {
+           height: 600px;
+
+       }
+       .pac-container {
+           font-family: Roboto;
+       }
+
+       #type-selector {
+           color: #fff;
+           background-color: #4d90fe;
+           padding: 5px 11px 0px 11px;
+       }
+
+       #type-selector label {
+           font-family: Roboto;
+           font-size: 13px;
+           font-weight: 300;
+       }
+
+       [type="input"] {
+           background:#f6f6f6;
+       }
+
+       [type="date"] {
+           border-radius:0px 0px 0px 0px;
+
+           line-height: 20px;
+           font-size: 12px;
+           font-weight: bold;
+           background:#f6f6f6 url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_1.png)  97% 50% no-repeat ;
+       } [type="time"] {
+           border-radius:0px 0px 0px 0px;
+
+           line-height: 20px;
+           font-size: 12px;
+           font-weight: bold;
+           background:#f6f6f6 url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
+       }
+
+       [type="date"]::-webkit-inner-spin-button {
+
+           display: none;
+       }
+       [type="date"]::-webkit-calendar-picker-indicator {
+           opacity: 0;
+       }
+   </style>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
+    <link   href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css">
+
+    <section class="page-title page-title-4 bg-secondary" style="height: 120px">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 class="uppercase mb0">
+                        <i class="ti-pencil-alt"></i> Créer Votre Evenement:</h3>
+                </div>
+                <div class="col-md-6 text-right">
+                    <ol class="breadcrumb breadcrumb-2">
+                        <li>
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Evenement</a>
+                        </li>
+                        <li class="active">Créer Evenemenet</li>
+                    </ol>
+                </div>
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+    <br><!--<div class="col-md-3"></div>-->
+<div class="col-md-1"></div>
+    <div class="col-md-6">
+    {{ form_start(form) }}
+    <div class="full-width">
+        {{ form_widget(form.nom,{ 'attr' : {'class':'form-control','id':'nom','placeholder':'Nom'}}) }}
+        {{form_errors(form.nom)}}
+    </div>
+
+    <div class="full-width">
+        {{ form_widget(form.nom,{ 'attr' : {'class':'form-control','id':'nom','placeholder':'Nom'}}) }}
+        {{form_errors(form.nom)}}
+    </div>
+
+    <div class="full-width">
+        {{ form_widget(form.date,{ 'attr' : {'class':'form-control datepicker','id':'datepicker','placeholder':'date'}}) }}
+        {{form_errors(form.date)}}
+    </div>
+
+    <div class="full-width">
+        {{ form_widget(form.heure,{ 'attr' : {'class':'form-control','id':'heure','placeholder':'heure'}}) }}
+        {{form_errors(form.heure)}}
+    </div>
+
+    <div class="full-width">
+    {{ form_widget(form.lieu,{ 'attr' : {'class':'form-control','id':'lieu','placeholder':'lieu'}}) }}
+    {{form_errors(form.lieu)}}
+</div>
+
+    <div class="full-width">
+    {{ form_widget(form.type,{ 'attr' : {'class':'form-control','id':'type','placeholder':'type'}}) }}
+    {{form_errors(form.type)}}
+</div>
+
+    <div class="full-width">
+    {{ form_widget(form.nbreDispo,{ 'attr' : {'class':'form-control','id':'nbreDispo','placeholder':'nombre disponible'}}) }}
+    {{form_errors(form.nbreDispo)}}
+</div>
+
+    <div class="full-width">
+        {{ form_widget(form.description,{ 'attr' : {'class':'','id':'description','placeholder':'description'}}) }}
+        {{form_errors(form.description)}}
+    </div>
+<br>
+    <div class="full-width">
+        {{ form_widget(form.photo,{ 'attr' : {'class':'form-control','id':'photo','placeholder':'photo'}}) }}
+        {{form_errors(form.photo)}}
+    </div>
+<center>
+        <div class="btn-group btn-group-toggle" >
+            <label class="btn btn-secondary" id="demo">
+                {{ form_widget(form.payant.0,{'attr':{'class':'custom-control-input'}}) }}  Payant <br>
+            </label>
+            &emsp;&emsp;&emsp;&emsp;
+            <label class="btn btn-secondary">
+                {{ form_widget(form.payant.1,{'attr':{'class':'custom-control-input'}}) }}  Gratuit<br>
+            </label>
+
+        </div>
+</center>
+
+        {{ form_widget(form) }}
+        <input type="submit"  value="Créer Evennement" />
+    {{ form_end(form) }}
+
+
+    <ul>
+        <li>
+            <a href="{{ path('e_index') }}">Back to the list</a>
+        </li>
+    </ul>
+</div>
+    <div class="col-md-5" id="map">
+    </div>
+
+
+    <script>
+
+
+
+
+
+        // This example requires the Places library. Include the libraries=places
+        // parameter when you first load the API. For example:
+        // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+        var marker;
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 36, lng: 10},
+                zoom: 10
+            });
+            var input = /** @type {!HTMLInputElement} */(
+                document.getElementById('evenementbundle_evenement_lieu'));
+
+
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.bindTo('bounds', map);
+
+            var infowindow = new google.maps.InfoWindow();
+            var marker = new google.maps.Marker({
+                map: map,
+                anchorPoint: new google.maps.Point(0, -29)
+
+            });
+            marker = new google.maps.Marker({
+                map: map,
+                draggable: true,
+                animation: google.maps.Animation.DROP,
+                position: map.center
+
+
+            });
+            marker.setMap(map);
+            marker.addListener('click', toggleBounce);
+
+
+            google.maps.event.addListener(marker, 'drag', function(event) {
+
+
+            });
+
+
+
+
+
+
+            autocomplete.addListener('place_changed', function() {
+                infowindow.close();
+                marker.setVisible(false);
+
+                var place = autocomplete.getPlace();
+
+                // If the place has a geometry, then present it on a map.
+                if (place.geometry.viewport) {
+                    map.fitBounds(place.geometry.viewport);
+
+                } else {
+
+                    map.setCenter(place.geometry.location);
+                    map.setZoom(10);  // Why 17? Because it looks good.
+
+                }
+
+
+                ;
+                marker.setPosition(place.geometry.location);
+                marker.setVisible(true);
+
+
+                var address = '';
+                if (place.address_components) {
+                    address = [
+                        (place.address_components[0] && place.address_components[0].short_name || ''),
+                        (place.address_components[1] && place.address_components[1].short_name || ''),
+                        (place.address_components[2] && place.address_components[2].short_name || '')
+                    ].join(' ');
+                }
+
+                infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+                infowindow.open(map, marker);
+            });
+
+            // Sets a listener on a radio button to change the filter type on Places
+            // Autocomplete.
+            function setupClickListener(id, types) {
+                var radioButton = document.getElementById(id);
+                radioButton.addEventListener('click', function() {
+                    autocomplete.setTypes(types);
+                });
+            }
+
+
+        }
+        function toggleBounce() {
+            if (marker.getAnimation() !== null) {
+                marker.setAnimation(null);
+            } else {
+                marker.setAnimation(google.maps.Animation.BOUNCE);
+            }
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Y-cLVEP0xzja-900Y1FDSCT_YCwk0xc&libraries=places&callback=initMap"
+            async defer></script>
+
+{% endblock %}

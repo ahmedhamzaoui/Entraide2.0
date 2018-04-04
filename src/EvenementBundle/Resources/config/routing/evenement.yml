@@ -1,0 +1,29 @@
+e_index:
+    path:     /
+    defaults: { _controller: "EvenementBundle:Evenement:index" }
+    methods:  GET
+
+e_show:
+    path:     /{id}/show
+    defaults: { _controller: "EvenementBundle:Evenement:show" }
+    methods:  GET
+
+e_new:
+    path:     /new
+    defaults: { _controller: "EvenementBundle:Evenement:new" }
+    methods:  [GET, POST]
+
+e_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EvenementBundle:Evenement:edit" }
+    methods:  [GET, POST]
+
+e_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EvenementBundle:Evenement:delete" }
+    methods:  DELETE
+
+e_rech:
+    path:     /rech
+    defaults: { _controller: "EvenementBundle:Evenement:rech" }
+

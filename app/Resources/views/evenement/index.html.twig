@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<br>
+<br>
+<br>
+
+    <div class="container">
+        <div class="row masonry masonryFlyIn mb40 fadeIn" style="position: relative; height: 928.5px;">
+    {% for evenement in evenements %}
+        <div class="col-sm-4 post-snippet masonry-item fadeIn">
+            <a href="#">
+                <img alt="Post Image" src="{{ asset('bundles/template/img/blog-single-3.jpg') }}">
+            </a>
+            <div class="inner">
+                <a href="#">
+                    <h5 class="mb0">{{ evenement.nom|capitalize }}</h5>
+                    <span class="inline-block mb16">{% if evenement.date %}{{ evenement.date|date('Y-m-d') }}{% endif %}</span>
+                </a>
+                <hr>
+                <p>
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
+                </p>
+                <a class="btn btn-sm" href="#">Read More</a>
+                <ul class="tags pull-right">
+                    <li>
+                        <a class="btn btn-sm btn-icon" href="#">
+                            <i class="ti-twitter-alt"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="btn btn-sm btn-icon" href="#">
+                            <i class="ti-facebook"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    {% endfor %}
+        <!--end of snippet-->
+
+        <!--end of snippet-->
+    </div>
+    </div>
+
+    <ul>
+        <li>
+            <a href="{{ path('e_new') }}">Create a new evenement</a>
+        </li>
+    </ul>
+{% endblock %}
