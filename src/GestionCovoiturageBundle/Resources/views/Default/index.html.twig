@@ -1,0 +1,82 @@
+
+{% extends "::base.html.twig" %}
+{% block body %}
+
+    <div>
+
+    </div>
+    <center>
+    <div class="horizontal-tile" style="width: 595px "  >
+        <br><br><br>
+        <form action="{{ path('recherche_annonceprix') }}" method="post">
+            <table>
+                <tr>
+                    <td><input type="number" name="prixMin"   placeholder="Prix min" /></td>
+                    <td></td>
+                    <td> <input type="number" name="prixMax"   placeholder="Prix Max" /></td>
+                    <td></td>
+                    <td>        <button  class="btn-danger" type="submit">ReChercher</button>
+                    </td>
+
+                </tr>
+            </table>
+            <p>
+                <em> <h5 style="color: #880000">{% for label, messages in app.flashes %}
+                            {% for message in messages %}
+                                <div class="flash-{{ label }}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endfor %}</h5></em>
+            </p>
+
+
+        </form>
+        {% for cov in covoiturage %}
+
+
+            {% if cov.idUser!=user %}
+
+
+
+            <div class="tile-left">
+
+
+                <div class="one-fourth heightfix">
+                    <iframe frameborder="0" style="border:0" width="270px" height="240px"
+                            src="https://www.google.com/maps/embed/v1/directions?origin={{ cov.depart }}&destination={{ cov.arrive }}&key=AIzaSyBN5BlbnsC04RC40wvaZfm7QrwgFX8IhIU&mode=driving&avoid=tolls|highways" allowfullscreen></iframe>
+                </div>
+
+
+            </div>
+
+            <div class="tile-right bg-secondary">
+                <div class="description">
+                    <h5 class="mb8"> <strong>Date de depart : </strong> {{ cov.date|date('Y,m,d') }}</h5>
+
+                    <h5 class="mb8"> <strong>Heure de depart : </strong> {{ cov.heure|date('H:i') }}</h5>
+
+                    <h6 class="uppercase">
+                        {{ cov.depart }} &rarr; {{ cov.arrive }}
+                    </h6>
+                    <h6>
+                        Prix :  {{ cov.prix }} DT <br>
+
+                        {{ cov.nbrplaces }} Places Disponible<br>
+
+                    </h6>
+
+                    <a class="btn" href="{{ path('detail_covoiturage', {'id':cov.id,'iduser':cov.idUser.id|default(5)} )  }}">Plus de detail</a>
+
+                </div>
+
+            </div>
+            {% endif %}
+        {% endfor %}
+
+    </div>
+    </center>
+
+
+
+{% endblock body %}

@@ -1,0 +1,264 @@
+
+{% extends "::base.html.twig" %}
+
+{% block title %}Reclamations Objet Perdu/Trouvé{% endblock %}
+
+{% block body %}
+    <div class="main-container">
+        <section class="page-title page-title-4 bg-secondary">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3 class="uppercase mb0">
+                            <i class="ti-layout-list-large-image"></i>Toutes les reclamations Objet Perdu/Trouvé</h3>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <ol class="breadcrumb breadcrumb-2">
+                            <li>
+                                <a href="index-2.html">Home</a>
+                            </li>
+                            <li>
+                                <a href="#">Elements</a>
+                            </li>
+                            <li class="active">Text & Image</li>
+                        </ol>
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </section>
+        <p>
+
+        </p>
+        <div class="row">
+            <div class="col-md-8 col-sm-10 col-sm-offset-1 col-md-offset-2">
+                {{ form_start(form) }}
+
+                {{ form_end(form) }}
+                {% for reclamations in Reclamations %}
+                    {% if reclamations.type == "Reclamation Objet Perdu" and reclamations.etat == "recuperer"%}
+                        <div class="horizontal-tile">
+                            <div class="tile-left">
+                                <a href="#">
+                                    <div class="background-image-holder fadeIn" style="background: url({{ asset('uploads/images/' ~ reclamations.getPhoto()) }});" >
+                                        <img alt="image" class="background-image" src="{{ asset('uploads/images/' ~ reclamations.getPhoto()) }}" style="display: none;">
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="tile-right bg-secondary">
+                                <div class="description">
+                                    <i class="material-icons" style="font-size: 35px;color: lime">check_circle</i>
+                                    <h4 class="mb8">{{ reclamations.description|raw }}</h4>
+                                    <h6 class="uppercase">
+                                        {{ reclamations.dateDecouverte| date("d-m-Y") }}
+                                    </h6>
+                                    <p>
+                                    <ul>
+                                        <li>
+                                            lieu decouverte: {{ reclamations.lieuDecouverte }}
+                                        </li>
+                                        <li>
+                                            type d'objet perdu: {{ reclamations.typeobjPerdu }}
+                                        </li>
+                                        <li>
+                                            autre: {{ reclamations.autretypeobjPerdu }}
+                                        </li>
+                                        <li>
+                                            type: {{ reclamations.type }}
+                                        </li>
+                                        <li>
+                                            localisation: {{ reclamations.localisation }}      autre: {{ reclamations.autrelocalisation }}
+                                        </li>
+                                        <li>
+                                            autre: {{ reclamations.autrelocalisation }}
+                                        </li>
+                                        <li>
+                                            etage: {{ reclamations.etage }}
+                                        </li>
+                                        <li>
+                                            salle: {{ reclamations.salle }}
+                                        </li>
+                                        <h6 class="uppercase">
+                                    <p>C'est bon,Cet objet est récupéré par son propriétaire</p>
+                                    </h6>
+
+                                    </ul>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    {% elseif reclamations.type == "Reclamation Objet Perdu" and reclamations.etat == ""%}
+                        <div class="horizontal-tile">
+                            <div class="tile-left">
+                                <a href="#">
+                                    <div class="background-image-holder fadeIn" style="background: url({{ asset('uploads/images/' ~ reclamations.getPhoto()) }});" >
+                                        <img alt="image" class="background-image" src="{{ asset('uploads/images/' ~ reclamations.getPhoto()) }}" style="display: none;">
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="tile-right bg-secondary">
+                                <div class="description">
+                                    <i class="material-icons" style="font-size: 35px;color: red">highlight_off</i>
+                                    <h4 class="mb8">{{ reclamations.description|raw }}</h4>
+                                    <h6 class="uppercase">
+                                        {{ reclamations.dateDecouverte| date("d-m-Y") }}
+                                    </h6>
+                                    <p>
+                                        <ul>
+                                            <li>
+                                                lieu decouverte: {{ reclamations.lieuDecouverte }}
+                                            </li>
+                                            <li>
+                                                type d'objet perdu: {{ reclamations.typeobjPerdu }}
+                                            </li>
+                                            <li>
+                                                autre: {{ reclamations.autretypeobjPerdu }}
+                                            </li>
+                                            <li>
+                                                type: {{ reclamations.type }}
+                                            </li>
+                                            <li>
+                                                localisation: {{ reclamations.localisation }}      autre: {{ reclamations.autrelocalisation }}
+                                            </li>
+                                            <li>
+                                                autre: {{ reclamations.autrelocalisation }}
+                                            </li>
+                                            <li>
+                                                etage: {{ reclamations.etage }}
+                                            </li>
+                                            <li>
+                                                salle: {{ reclamations.salle }}
+                                            </li>
+                                            <li>
+                                                Etat: {{ reclamations.etat }}
+                                            </li>
+                                            <h6 class="uppercase">
+                                    <p>Cet objet n'est pas encore récupéré par son propriétaire</p>
+                                    </h6>
+                                    <td><a href="{{ path('contactcbon1',{'id':reclamations.id}) }}">Contacter</a></td>
+
+                                    </ul>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    {% elseif reclamations.type == "Reclamation Objet Trouvé" and reclamations.etat == "rendu"%}
+                        <div class="horizontal-tile">
+                            <div class="tile-left">
+                                <a href="#">
+                                    <div class="background-image-holder fadeIn" style="background: url({{ asset('uploads/images/' ~ reclamations.getPhoto()) }});" >
+                                        <img alt="image" class="background-image" src="{{ asset('uploads/images/' ~ reclamations.getPhoto()) }}" style="display: none;">
+                                    </div>
+
+
+
+                                </a>
+                            </div>
+                            <div class="tile-right bg-secondary">
+                                <div class="description">
+                                    <i class="material-icons" style="font-size: 35px;color: lime">check_circle</i>
+                                    <h4 class="mb8">{{ reclamations.description|raw }}</h4>
+                                    <h6 class="uppercase">
+                                        {{ reclamations.dateDecouverte| date("d-m-Y") }}
+                                    </h6>
+                                    <p>
+                                    <ul>
+                                        <li>
+                                            lieu decouverte: {{ reclamations.lieuDecouverte }}
+                                        </li>
+                                        <li>
+                                            type d'objet perdu: {{ reclamations.typeobjPerdu }}
+                                        </li>
+                                        <li>
+                                            autre: {{ reclamations.autretypeobjPerdu }}
+                                        </li>
+                                        <li>
+                                            type: {{ reclamations.type }}
+                                        </li>
+                                        <li>
+                                            localisation: {{ reclamations.localisation }}      autre: {{ reclamations.autrelocalisation }}
+                                        </li>
+                                        <li>
+                                            autre: {{ reclamations.autrelocalisation }}
+                                        </li>
+                                        <li>
+                                            etage: {{ reclamations.etage }}
+                                        </li>
+                                        <li>
+                                            salle: {{ reclamations.salle }}
+                                        </li>
+                                        <li>
+                                            Etat: {{ reclamations.etat }}
+                                        </li>
+                                        <h6 class="uppercase">
+                                    <p>C'est bon,Cet objet est rendu à son propriétaire</p>
+                                    </h6>
+                                    </ul>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    {% elseif reclamations.type == "Reclamation Objet Trouvé" and reclamations.etat == ""%}
+                        <div class="horizontal-tile">
+                            <div class="tile-left">
+                                <a href="#">
+                                    <div class="background-image-holder fadeIn" style="background: url({{ asset('uploads/images/' ~ reclamations.getPhoto()) }});" >
+                                        <img alt="image" class="background-image" src="{{ asset('uploads/images/' ~ reclamations.getPhoto()) }}" style="display: none;">
+                                    </div>
+
+                                </a>
+                            </div>
+                            <div class="tile-right bg-secondary">
+                                <div class="description">
+                                    <i class="material-icons" style="font-size: 35px;color: red">highlight_off</i>
+                                    <h4 class="mb8">{{ reclamations.description|raw }}</h4>
+                                    <h6 class="uppercase">
+                                        {{ reclamations.dateDecouverte| date("d-m-Y") }}
+                                    </h6>
+                                    <p>
+                                        <ul>
+                                            <li>
+                                                lieu decouverte: {{ reclamations.lieuDecouverte }}
+                                            </li>
+                                            <li>
+                                                type d'objet perdu: {{ reclamations.typeobjPerdu }}
+                                            </li>
+                                            <li>
+                                                autre: {{ reclamations.autretypeobjPerdu }}
+                                            </li>
+                                            <li>
+                                                type: {{ reclamations.type }}
+                                            </li>
+                                            <li>
+                                                localisation: {{ reclamations.localisation }}      autre: {{ reclamations.autrelocalisation }}
+                                            </li>
+                                            <li>
+                                                autre: {{ reclamations.autrelocalisation }}
+                                            </li>
+                                            <li>
+                                                etage: {{ reclamations.etage }}
+                                            </li>
+                                            <li>
+                                                salle: {{ reclamations.salle }}
+                                            </li>
+                                            <li>
+                                                Etat: {{ reclamations.etat }}
+                                            </li>
+                                            <h6 class="uppercase">
+                                    <p>Cet objet n'est pas encore rendu à son propriétaire</p>
+                                    </h6>
+                                    <td><a href="{{ path('contactcbon2',{'id':reclamations.id}) }}">Contacter</a></td>
+                                    </ul>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                <!--end of horizontal tile-->
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

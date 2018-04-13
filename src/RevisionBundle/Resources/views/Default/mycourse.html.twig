@@ -1,0 +1,24 @@
+{% extends "::base.html.twig" %}
+{% block javascripts %}
+    {% for j in mycourse %}
+
+        <div class="col-md-3 col-sm-6 col-xs-12 block">
+            <div class="thumbnail thumbnailContent">
+                <div class="caption border-color-5">
+                    <h3><a href="course-single-left-sidebar.html" class="color-5">{{ j.module }}</a></h3>
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-calendar-o" aria-hidden="true"></i>{{ j.matiere }}</li>
+                        <li><i class="fa fa-clock-o" aria-hidden="true"></i>{{ j.datePub|date('d/M/Y') }}</li>
+                    </ul>
+                    <ul class="list-inline btn-purple">
+                        <li><a href="cart-page.html" class="btn btn-primary "><i class="fa fa-shopping-basket " aria-hidden="true"></i>Télécharger</a></li>
+                        {#<li><a href="course-single-left-sidebar.html" class="btn btn-link"><i class="fa fa-angle-double-right" aria-hidden="true"></i> More</a></li>#}
+                        <li><a href="{{ path('revision_mod',{'id':j.id}) }}" class="btn btn-primary">Modifier</a></li>
+                        <li><a href="{{ path('revision_supp',{'id':j.id}) }}" class="btn btn-primary">Supprimer</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

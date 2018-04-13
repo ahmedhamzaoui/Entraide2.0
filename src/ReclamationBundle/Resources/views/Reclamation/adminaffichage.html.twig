@@ -1,0 +1,146 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block body %}
+
+<body class="page-wrapper">
+<div class="page-wrapper">
+<h1>Liste Des Reclamation Objet Trouvé/Perdu</h1>
+
+
+
+
+{% for reclamations in ca %}
+    {% if reclamations.type == "Reclamation Objet Perdu"%}
+        <table>
+
+            <ul>
+                <tr>
+                    <td>
+                        <img src="{{ asset('uploads/images/' ~ reclamations.getPhoto()) }}" width="200px">
+                    </td>
+                    <td>
+                    <li>
+                        {{ reclamations.description|raw }}
+                    </li>
+
+                        <li>
+                            Date: {{ reclamations.dateDecouverte| date("Y-m-d") }}
+                        </li>
+                        <li>
+                            lieu decouverte: {{ reclamations.lieuDecouverte }}
+                        </li>
+                        <li>
+                            type d'objet perdu: {{ reclamations.typeobjPerdu }}
+                        </li>
+                        <li>
+                            autre: {{ reclamations.autretypeobjPerdu }}
+                        </li>
+                        <li>
+                            type: {{ reclamations.type }}
+                        </li>
+                        <li>
+                            localisation: {{ reclamations.localisation }}
+                        </li>
+                        <li>
+                            autre: {{ reclamations.autrelocalisation }}
+                        </li>
+                        <li>
+                            etage: {{ reclamations.etage }}
+                        </li>
+                        <li>
+                            salle: {{ reclamations.salle }}
+                        </li>
+                        <li>
+                            <a href="{{ path('valideradmin',{'id':reclamations.id}) }}">Valider</a>
+                            <a href="{{ path('deleteadmin',{'id':reclamations.id}) }}">Refuser</a>
+                        </li>
+                    </td>
+
+
+
+
+                </tr>
+            </ul>
+        </table>
+        {% elseif reclamations.type == "Reclamation Objet Trouvé"%}
+            <table>
+
+            <ul>
+                <tr>
+                    <td>
+                        <img src="{{ asset('uploads/images/' ~ reclamations.getPhoto()) }}" width="200px">
+                    </td>
+                    <td>
+                <li>
+                    {{ reclamations.description|raw }}
+                </li>
+
+
+                <li>
+                    Date: {{ reclamations.dateDecouverte| date("Y-m-d") }}
+                </li>
+                <li>
+                    lieu decouverte: {{ reclamations.lieuDecouverte }}
+                </li>
+                <li>
+                    type d'objet perdu: {{ reclamations.typeobjPerdu }}
+                </li>
+                <li>
+                    autre: {{ reclamations.autretypeobjPerdu }}
+                </li>
+                <li>
+                    type: {{ reclamations.type }}
+                </li>
+                <li>
+                    localisation: {{ reclamations.localisation }}
+                </li>
+                <li>
+                    autre: {{ reclamations.autrelocalisation }}
+                </li>
+                <li>
+                    etage: {{ reclamations.etage }}
+                </li>
+                <li>
+                    salle: {{ reclamations.salle }}
+                </li>
+                        <li>
+                    <a href="{{ path('valideradmin',{'id':reclamations.id}) }}">Valider</a>
+                    <a href="{{ path('deleteadmin',{'id':reclamations.id}) }}">Refuser</a>
+                        </li>
+                    </td>
+
+
+
+
+                </tr>
+            </ul>
+            </table>
+    {% else %}
+        <table>
+
+        <ul>
+            <tr>
+                <td>
+                    <img src="{{ asset('uploads/images/' ~ reclamations.getPhoto2()) }}" width="200px">
+                </td>
+                <td>
+                    <li>
+                        Type de Reclamation: {{ reclamations.type }}
+                    </li>
+                    <li>
+                        Matricule: {{ reclamations.matricule }}
+                    </li>
+                    <li>
+                <a href="{{ path('valideradmin',{'id':reclamations.id}) }}">Valider</a>
+                <a href="{{ path('deleteadmin',{'id':reclamations.id}) }}">Refuser</a>
+                    </li>
+                </td>
+            </tr>
+
+        </ul>
+        </table>
+    {% endif %}
+{% endfor %}
+</div>
+</body>
+{% endblock %}

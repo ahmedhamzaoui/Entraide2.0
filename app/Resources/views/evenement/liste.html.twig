@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <style>
+        #map {
+            height: 300px;
+            width: 100%;
+        }
+
+    </style>
+
+
+    <br><br><br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-12 block">
+                <div class="panel panel-default">
+                    <img src="{{ asset('eventupload/'~ evenement.photo)}}" alt="image" class="img-responsive">
+                    <div class="panel-body">
+                        <h3 class="color-1">{{ evenement.nom|capitalize }}</h3>
+                        <p style="width:max-content;  word-wrap: break-word">{{ evenement.description }}</p>
+<div class="col-md-9"></div>
+<div class="col-md-3">
+
+</div>
+</div>
+
+
+
+                </div>
+
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+
+                <aside>
+                    <div class="rightSidebar">
+
+                        <div class="panel panel-default">
+
+                            <div class="panel-heading bg-color-1 border-color-1">
+                                <h3 class="panel-title">Liste des Participants</h3>
+                            </div>
+                            <div class="panel-body">
+                                <ul class="media-list">
+                                   {% for r in res %}
+                                    <li class="media">
+                                        <div class="media-left iconContent bg-color-2">
+
+                                        </div>
+                                        <div class="media-body iconContent">
+                                            <h4 class="media-heading color-2"> <i class="fa fa-user" style="color: #cd2122" ></i>  {{ r.idUser.nom }} {{ r.idUser.prenom }}</h4>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+
+                                </ul>
+
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </aside>
+                <hr>
+
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <br><br><br><br><br><br>
+
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Y-cLVEP0xzja-900Y1FDSCT_YCwk0xc&callback=initMap">
+    </script>
+
+{% endblock %}

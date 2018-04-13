@@ -1,0 +1,189 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+<!doctype html>
+<html lang="en">
+
+<!-- Mirrored from foundry.mediumra.re/home-restaurant.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 19 Mar 2018 11:11:07 GMT -->
+<head>
+    <meta charset="utf-8">
+    <title>Reclamation Acceuil</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/themify-icons.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/flexslider.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/lightbox.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/ytplayer.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/theme-gunmetal.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/custom.css" rel="stylesheet" type="text/css" media="all" />
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400%7CRaleway:100,400,300,500,600,700%7COpen+Sans:400,500,600' rel='stylesheet' type='text/css'>
+</head>
+<body class="scroll-assist">
+
+
+<div class="main-container">
+    <section class="fullscreen image-bg overlay parallax">
+        <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 0px, 0px); background: url({{ asset('img/cover11.jpg' ) }});">
+            <img alt="image" class="background-image" src={{ asset('img/cover11.jpg' ) }} style="display: none;">
+        </div>
+        <div class="container v-align-transform">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <h1>Reclamations</h1>
+                </div>
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+        <div class="align-bottom text-center">
+            <a class="btn btn-white mb32" href="#">Porter Plainte</a>
+            <ul class="list-inline social-list mb24">
+                <li>
+                    <a href="#">
+                        <i class="ti-twitter-alt"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="ti-facebook"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="ti-dribbble"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="ti-vimeo-alt"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="pt120 pb120 pt-xs-80 pb-xs-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1 col-sm-12 text-center">
+                    <h3 class="mb48 mb-xs-32">Publiez votre annonce en quelques minutes et retrouvez votre objet perdu ou l'objet que vous avez trouvé et son propriétaire</h3>
+                    <p class="lead mb0">
+                        Bienvenue, Ici, Vous y trouverez toutes les informations utiles pour vos démarches vous permettant de retrouver votre objet perdu ou remettre un objet trouvé à son propriétaire. Vous pourrez déclarer la perte d'un objet en quelques minutes ou encore effectuer une recherche parmi des centaines d'annonces d'objets trouvés et perdus partout dans Esprit. Vous avez trouvé un objet ? Ne tardez pas à publier une annonce ! Son propriétaire a probablement lancé un avis de recherche et vous offrira sûrement une récompense.
+                    </p>
+                </div>
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+
+    <section class="image-bg overlay pt120 pb120 pt-xs-80 pb-xs-80">
+        <div class="background-image-holder fadeIn" style="background: url({{ asset('img/objets-trouves.jpg' ) }});">
+            <img alt="image" class="background-image" src={{ asset('img/objets-trouves.jpg' ) }} style="display: none;">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="uppercase">
+                        <strong>Déposez ici votre reclamation Objet Perdu/Trouvé</strong>
+                    </h5>
+                    <h4 class="mb160 mb-xs-80">Publiez votre annonce en quelques minutes et retrouvez votre objet perdu ou l'objet que vous avez trouvé</h4>
+                    <tr>
+                        <td>
+                            <a class="btn btn-lg btn-rounded" href="{{ path('add') }}">Publier Reclamation</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-lg btn-rounded" href="{{ path('affichertoutes') }}">Rechercher Reclamations</a>
+                        </td>
+                    </tr>
+                </div>
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="pt120 pb120 pt-xs-80 pb-xs-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1 col-sm-12 text-center">
+                    <h3 class="mb48 mb-xs-32">Publiez votre annonce de mal stationnement de voiture en quelques minutes </h3>
+                    <p class="lead mb0">
+                        Vous avez vu une voiture mal garée alors publiez votre annonce ou bien contactez directement son propriétaire
+                    </p>
+                    <p>
+
+                    </p>
+                    <a class="btn btn-lg btn-rounded" href="{{ path('findByMatricule') }}">Contactez le propriétaire</a>
+                </div>
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+
+    <section class="image-bg overlay pt120 pb120 pt-xs-80 pb-xs-80">
+        <div class="background-image-holder fadeIn" style="background: url({{ asset('img/home12.jpg' ) }});">
+            <img alt="image" class="background-image" src={{ asset('img/home12.jpg' ) }} style="display: none;">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="uppercase">
+                        <strong>Déposez ici votre reclamation de mal stationnement de voiture</strong>
+                    </h5>
+                    <h4 class="mb160 mb-xs-80">Publiez votre annonce en quelques minutes ou bien contactez le proprétaire de la voiture mal garée directement</h4>
+                    <tr>
+                        <td>
+                            <a class="btn btn-lg btn-rounded" href="{{ path('addMal') }}">Publier Reclamation</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-lg btn-rounded" href="{{ path('affichertoutesMal') }}">Rechercher Reclamations</a>
+                        </td>
+                    </tr>
+                </div>
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/flickr.js"></script>
+<script src="js/flexslider.min.js"></script>
+<script src="js/lightbox.min.js"></script>
+<script src="js/masonry.min.js"></script>
+<script src="js/twitterfetcher.min.js"></script>
+<script src="js/spectragram.min.js"></script>
+<script src="js/ytplayer.min.js"></script>
+<script src="js/countdown.min.js"></script>
+<script src="js/smooth-scroll.min.js"></script>
+<script src="js/parallax.js"></script>
+<script src="js/scripts.js"></script>
+<script>
+    window.intercomSettings = {
+        app_id: "jrdbn46n"
+    };
+</script>
+<script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/jrdbn46n';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+</body>
+
+<!-- Mirrored from foundry.mediumra.re/home-restaurant.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 19 Mar 2018 11:11:45 GMT -->
+</html>
+{% endblock %}

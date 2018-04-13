@@ -1,0 +1,222 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://www.datejs.com/build/date.js"></script>
+
+<script>
+    $(function () {
+        $('#c').keyup(function () {
+            abcd =  $("#c").val();
+            DATA = 's='+abcd;
+            //alert(abcd);
+            $.ajax({
+
+                url : '{{ path("rechercheajax") }}',
+                data:DATA,
+                success : function(response){
+                    $("#tab").html(
+                        "<table id='tab1'  class='table  table-bordered table-hover'>" +
+                        "        <tr>\n" +
+                        "            <thead>" +"<tr>\n"+"</tr>"+
+
+                        "            </thead>" +
+
+
+
+                        "\n" +
+                        "</tr>" +
+                        "" +
+                        "</table>"
+                    );
+                    $.each(response,function(k,el){
+
+                        $('#tab').append(
+                            "<tbody>" +
+                            "<tr  class=''>" +
+                            "<td>"+"<ul>"+"<li>"+"Description:"+el.description+"</li>"+"</ul>"+"</td>"+"</tr>" +
+                            "<tr>" +
+                            "<td>"+"<ul>"+"<li>"+"Date:"+el.dateDecouverte+"</li>"+"</ul>"+"</td>"+"</tr>" +
+                            "<tr>" +
+                            "<td>"+"<ul>"+"<li>"+"Lieu :"+el.lieuDecouverte+"</li>"+"</ul>"+"</td>"+"</tr>" +
+                            "<tr>" +
+                            "<td>"+"<ul>"+"<li>"+"Type objet :"+el.typeobjPerdu+"</li>"+"</ul>"+"</td>"+"</tr>" +
+                            "<tr>" +
+                            "<td>"+"<ul>"+"<li>"+"autre type objet :"+el.autretypeobjPerdu+"</li>"+"</ul>"+"</td>"+"</tr>" +
+                            "<tr>" +
+                            "<td>"+"<ul>"+"<li>"+"type reclamation :"+el.type+"</li>"+"</ul>"+"</td>"+"</tr>" +
+                            "<tr>" +
+                            "<td>"+"<ul>"+"<li>"+"Ou exactement ? "+el.localisation+"</li>"+"</ul>"+"</td>"+"</tr>" +
+                            "<tr>" +
+                            "<td>"+"<ul>"+"<li>"+"autre :"+el.autrelocalisation+"</li>"+"</ul>"+"</td>"+"</tr>" +
+                            "<tr>" +
+                            "<td>"+"<ul>"+"<li>"+"etage :"+el.etage+"</li>"+"</ul>"+"</td>"+"</tr>" +
+                            "<tr>" +
+                            "<td>"+"<ul>"+"<li>"+"salle :"+el.salle+"</li>"+"</ul>"+"</td>"+"</tr>" +
+                            "<tr>" +
+                            "<td>"+"<ul>"+"<p>"+"******************"+"</p>"+"</ul>"+"</td>"+"</tr>" +
+
+
+
+
+                            "</tbody>"
+
+                        )
+                    })
+
+
+                },
+            })
+        })
+    })
+</script>
+
+<h1>Recherche Ajax</h1>
+
+<label for="type" >Type</label>
+<input type="text" name="type" id="c" ><br>
+
+    <section  id="tab">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 text-center">
+                    <h4 class="uppercase mb16">Contained Tiles
+                        <span class="label">New in v1.9</span>
+                    </h4>
+                    <p class="lead mb80">
+                        These multipurpose tiles make ideal presentations for project showcases or as links to auxilary pages around your site.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8 col-sm-10 col-sm-offset-1 col-md-offset-2">
+                    {% for voiture in voitures %}
+                    <div class="horizontal-tile">
+                        <div class="tile-left">
+                            <a href="#">
+                                <div class="background-image-holder fadeIn" style="background: url({{ asset('uploads/images/' ~ voiture.getPhoto()) }});">
+                                    <img alt="image" class="background-image" src="{{ asset('uploads/images/' ~ voiture.getPhoto()) }}" style="display: none;">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="tile-right bg-secondary">
+                            <div class="description">
+                                <table>
+
+
+                                        <tr>
+                                            <td>
+                                                <ul>
+                                                    <li>
+                                                        Description: {{ voiture.description }}
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <ul>
+                                                    <li>
+                                                        Date {{ voiture.dateDecouverte| date("Y-m-d") }}
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <ul>
+                                                    <li>
+                                                        Lieu {{ voiture.lieuDecouverte }}
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <ul>
+                                                    <li>
+                                                        Type d'objet {{ voiture.typeobjPerdu }}
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <ul>
+                                                    <li>
+                                                        Autre {{ voiture.autretypeobjPerdu }}
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <ul>
+                                                    <li>
+                                                        Type Reclamation {{ voiture.type }}
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <ul>
+                                                    <li>
+                                                        Ou exactement {{ voiture.localisation }}
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <ul>
+                                                    <li>
+                                                        Autre {{ voiture.autrelocalisation }}
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <ul>
+                                                    <li>
+                                                        Etage {{ voiture.etage }}
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <ul>
+                                                    <li>
+                                                        Salle {{ voiture.salle }}
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><ul></ul></td>
+                                        </tr>
+
+
+                                </table>
+
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    {% endfor %}
+                    <!--end of horizontal tile-->
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    </body>
+{% endblock %}

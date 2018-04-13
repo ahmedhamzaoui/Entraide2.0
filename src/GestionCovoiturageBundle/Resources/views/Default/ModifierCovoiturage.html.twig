@@ -1,0 +1,191 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+
+        #map {
+            height: 600px;
+
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .controls {
+            margin-top: 10px;
+            border: 1px solid transparent;
+            border-radius: 2px 0 0 2px;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            height: 32px;
+            outline: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        #origin-input,
+        #destination-input {
+            background-color: #fff;
+            font-family: Roboto;
+            font-size: 15px;
+            font-weight: 300;
+            margin-left: 12px;
+            padding: 0 11px 0 13px;
+            text-overflow: ellipsis;
+            width: 200px;
+        }
+
+        #origin-input:focus,
+        #destination-input:focus {
+            border-color: #4d90fe;
+        }
+
+        #mode-selector {
+            color: #fff;
+            background-color: #4d90fe;
+            margin-left: 12px;
+            padding: 5px 11px 0px 11px;
+        }
+
+        #mode-selector label {
+            font-family: Roboto;
+            font-size: 13px;
+            font-weight: 300;
+        }
+
+    </style>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
+    <link   href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css">
+
+    <section class="page-title page-title-4 bg-secondary" style="height: 120px">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 class="uppercase mb0">
+                        <i class="ti-pencil-alt"></i> Modifier Votre Annonce:</h3>
+                </div>
+                <div class="col-md-6 text-right">
+                    <ol class="breadcrumb breadcrumb-2">
+                        <li>
+                            <a href="{{ path('acceuil_cov') }}">Acceuil Covoiturage</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('mes_covoiturage') }}">Vos Trajets</a>
+                        </li>
+                        <li class="active">Modifier Trajet</li>
+                    </ol>
+                </div>
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+    <br><!--<div class="col-md-3"></div>-->
+    <div class="col-md-1"></div>
+    <div class="col-md-4" align="center">
+        {{ form_start(edit_form) }}
+        <table>
+            <tr>
+                <td>
+                    {{ form_label(edit_form.depart) }}
+                </td>
+                <td>
+                    <div class="full-width">
+                    {{ form_widget(edit_form.depart,{ 'attr' : {'class':'form-control','id':'origin-input','placeholder':'De'}}) }}
+                    {{form_errors(edit_form.depart)}}
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    {{ form_label(edit_form.arrive) }}
+                </td>
+                <td>
+                    {{ form_widget(edit_form.arrive,{ 'attr' : {'class':'form-control','id':'destination-input','placeholder':'A'}}) }}
+                    {{form_errors(edit_form.arrive)}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ form_label(edit_form.prix) }}
+                </td>
+                <td>
+                    {{ form_widget(edit_form.prix) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ form_label(edit_form.date) }}
+                </td>
+            <td>
+                <div class="full-width">
+                    {{ form_widget(edit_form.date,{ 'attr' : {'class':'form-control datepicker','id':'datepicker','placeholder':'date'}}) }}
+                    {{form_errors(edit_form.date)}}
+                </div>
+            </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ form_label(edit_form.heure) }}
+                </td>
+                <td>
+            <div class="full-width">
+                {{ form_widget(edit_form.heure,{ 'attr' : {'class':'form-control','id':'heure','placeholder':'heure'}}) }}
+                {{form_errors(edit_form.heure)}}
+            </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ form_label(edit_form.nbrplaces) }}
+                </td>
+                <td>
+                    {{ form_widget(edit_form.nbrplaces) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ form_label(edit_form.comfort) }}
+                </td>
+                <td>
+                    {{ form_widget(edit_form.comfort) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ form_label(edit_form.fumeur) }}
+                </td>
+                <td>
+                    {{ form_widget(edit_form.fumeur) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+            <td>
+
+                    {{ form_end(edit_form) }}
+            </td>
+            </tr>
+
+
+        </table>
+
+        {{ form_end(edit_form) }}
+
+
+    </div>
+
+
+
+
+{% endblock %}
+
+

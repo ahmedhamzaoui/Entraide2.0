@@ -1,0 +1,81 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+    <br>
+    <br>
+    <br>
+    <style>
+        img {
+            height: 30px;
+            width: 30px;
+        }
+        table {
+            width: 100%;
+        }
+
+        th {
+            height: 50px;
+        }
+    </style>
+    <div>
+
+    </div>
+    <center>
+        <h3>Liste De Vos Annonces dans des trajets</h3>
+        <div class="horizontal-tile" style="width: 595px "  >
+
+
+
+            {% for cov in covoiturage %}
+
+
+                <div class="tile-left">
+
+
+                    <div class="one-fourth heightfix">
+                        <iframe frameborder="0" style="border:0" width="270px" height="240px"
+                                src="https://www.google.com/maps/embed/v1/directions?origin={{ cov.depart }}&destination={{ cov.arrive }}&key=AIzaSyBN5BlbnsC04RC40wvaZfm7QrwgFX8IhIU&mode=driving&avoid=tolls|highways" allowfullscreen></iframe>
+                    </div>
+
+                </div>
+
+                <div class="tile-right bg-secondary">
+                    <div class="description">
+                        <h5 class="mb8"> <strong>Date de depart : </strong> {{ cov.date|date('Y,m,d') }}</h5>
+
+                        <h5 class="mb8"> <strong>Heure de depart : </strong> {{ cov.heure|date('H:i') }}</h5>
+
+                        <h6 class="uppercase">
+                            {{ cov.depart }} &rarr; {{ cov.arrive }}
+                        </h6>
+                        <h6>
+                            Prix :  {{ cov.prix }} DT <br>
+
+                            {{ cov.nbrplaces }} Places Disponible<br>
+                            Comfort : {{ cov.comfort }} <br>
+                            Fumeur : {{ cov.fumeur }}
+                        </h6>
+
+                        <a class="" href="{{ path('Supprimer_Covoiturage1', {'id':cov.id} )  }}"><img src="{{ asset('bundles/template/img/delete.png') }}"></a>
+                        <a class="" href="{{ path('Mdifier_Covoiturage', {'id':cov.id} )  }}"><img src="{{ asset('bundles/template/img/update.png') }}"></a>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+            {% if covoiturages == null %}
+                <br><br><br>
+                <div class="text-center">
+                    <i class="ti-receipt icon icon-lg mb24 mb-xs-0"></i>
+                    <h1 class="large">OUUPS!!</h1>
+                    <p>Vous n'avez aucune demande de covoiturage</p>
+                    <a class="btn" href="index.html.twig">Menu Principal</a>
+                    <a class="btn" href="{{ path('ajout_covoiturage') }}">Proposer un trajet</a>
+                </div>
+
+            {% endif %}
+        </div>
+    </center>
+    <div class="text-center">{{ knp_pagination_render(covoiturage) }}</div>
+
+{% endblock body %}

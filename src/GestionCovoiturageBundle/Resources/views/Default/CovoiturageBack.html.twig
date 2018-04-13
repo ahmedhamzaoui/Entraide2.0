@@ -1,0 +1,36 @@
+
+{% extends "::baseadmin.html.twig" %}
+{% block body %}
+        <h3 align="center">Liste Des trajets de covoiturage</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div align="right"><a href="{{ path('ListResAdmin') }}">Liste de Reservation</a></div>
+    <table class="table" border="2">
+        <tr style="background:#8c8c8c;">
+            <td>Depart</td>
+            <td>Arrive</td>
+            <td>Date de depart</td>
+            <td>Heure de depart</td>
+            <td>Comfort</td>
+            <td>Fumeur</td>
+            <td>Date de publication</td>
+            <td>Annonce publié par</td>
+            <td></td>
+        </tr>
+        {% for cov in covoiturage  %}
+
+        <tr>
+            <td>{{ cov.depart }}</td>
+            <td>{{ cov.arrive }}</td>
+            <td>{{ cov.date|date('Y/m/d') }}</td>
+            <td>{{ cov.heure|date('H:i') }}</td>
+            <td>{{ cov.comfort }}</td>
+            <td>{{ cov.fumeur}}</td>
+            <td>{{ cov.dateSys|date('Y/m/d') }}</td>
+            <td>{{ cov.idUser.nom }} {{ cov.idUser.prenom }}</td>
+            <td><a href="{{ path('Supprimer_CovoiturageAdmin', {'id': cov.id}) }}"><img src="{{ asset('bundles/template/img/delete.png') }}" style="width:50px;
+height:50px;"></a> </td>
+
+        </tr>
+        {% endfor %}
+    </table>
+
+{% endblock body %}
+

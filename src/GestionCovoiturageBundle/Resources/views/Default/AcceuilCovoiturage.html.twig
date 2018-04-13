@@ -1,0 +1,231 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+    <style>
+        #map {
+            height: 600px;
+
+        }
+        .pac-container {
+            font-family: Roboto;
+        }
+
+        #type-selector {
+            color: #fff;
+            background-color: #4d90fe;
+            padding: 5px 11px 0px 11px;
+        }
+
+        #type-selector label {
+            font-family: Roboto;
+            font-size: 13px;
+            font-weight: 300;
+        }
+
+        [type="input"] {
+            background:#f6f6f6;
+        }
+
+        [type="date"] {
+            border-radius:0px 0px 0px 0px;
+
+            line-height: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            background:#f6f6f6 url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_1.png)  97% 50% no-repeat ;
+        } [type="time"] {
+              border-radius:0px 0px 0px 0px;
+
+              line-height: 20px;
+              font-size: 12px;
+              font-weight: bold;
+              background:#f6f6f6 url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
+          }
+
+        [type="date"]::-webkit-inner-spin-button {
+
+            display: none;
+        }
+        [type="date"]::-webkit-calendar-picker-indicator {
+            opacity: 0;
+        }
+    </style>
+
+    <body class="scroll-assist">
+ <center>
+  <section class="fullscreen image-bg parallax background-multiply">
+   <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 0px, 0px); background: url(&quot;{{ asset('bundles/template/img/Covoiturage.jpg') }}&quot;); opacity: 0.66">
+    <img alt="image" class="background-image" src="{{ asset('bundles/template/img/Covoiturage.jpg') }}" style="display: none;opacity: 0.66">
+   </div>
+   <div class="container v-align-transform">
+    <div class="row">
+     <div class="col-sm-12">
+      <h1 class="" style="color: #a94442; font-weight: 700 ; font-size: 60px ">Trouver un Covoiturage</h1>
+         <div class="BannerHome-wrapper">
+             <h1 class="" style="color: #FFFFFF; font-weight: 400 ; font-size: 40px">Écrivez une ville de départ et/ou une ville d'arrivée.</h1>
+             <h1 class="BannerHome-title"> </h1>
+             <form action="{{ path('recherche_annonce') }}" method="POST" >
+                 <div class="col-sm-6 col-md-3 ">
+                     <input class="" name="depart" placeholder="D'où partez-vous ?" title="Adresse, ville ou code postal" value="" type="text" id="depart"  autocomplete="off"><div class="Autocomp-reset" style="margin-top: -60px; height: 60px; left: 175px;"></div>
+
+                     </div>
+                 <div class="col-sm-6 col-md-3 " >
+                     <input class="" placeholder="Où allez-vous ?" id="arrive" title="Adresse, ville ou code postal" value="" type="text" name="arrive"  autocomplete="off"><div class="Autocomp-reset" style="margin-top: -60px; height: 60px; left: 175px;"></div>
+                    </div>
+                 <div class="col-sm-6 col-md-3">
+                     <input class=""  id="example-date-input" placeholder="Date de départ" name="date" type="date" >
+                 </div>
+
+
+
+                 <div class="col-sm-6 col-md-3">
+
+                     <input type="submit" class="btn" value="Rechercher un trajet">
+                 </div>
+
+             </form>
+
+         </div>
+     </div>
+
+
+    </div>
+    <!--end of row-->
+   </div>
+   <!--end of container-->
+
+
+
+
+  </section>
+     <section class="image-edge">
+         <div class="col-md-6 col-sm-4 p0">
+             <img alt="Screenshot" class="mb-xs-0" src="{{ asset('bundles/template/img/cov.PNG') }}">
+         </div>
+         <div class="container">
+             <div class="col-md-5 col-md-offset-1 col-sm-7 col-sm-offset-1 v-align-transform right">
+                 <h1 class="large mb40 mb-xs-16">Vous prenez le volant ? Dites-nous où vous allez !</h1>
+                 <h6 class="uppercase mb16">Profitez d'un trajet à moindre frais.</h6>
+                 <a class="btn-lg btn" href="{{ path('ajout_covoiturage') }}">Proposer un trajet </a>
+             </div>
+         </div>
+         <!--end of container-->
+     </section>
+
+     <div class="col-md-5" hidden id="map">
+     </div>
+ </center>
+
+    </body>
+
+ <script>
+
+
+
+
+
+     // This example requires the Places library. Include the libraries=places
+     // parameter when you first load the API. For example:
+     // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+     var marker;
+     function initMap() {
+         var map = new google.maps.Map(document.getElementById('map'), {
+             center: {lat: 36, lng: 10},
+             zoom: 10
+         });
+         var input = /** @type {!HTMLInputElement} */(
+             document.getElementById('depart'));
+         var input1 = /** @type {!HTMLInputElement} */(
+             document.getElementById('arrive'));
+
+         var autocomplete = new google.maps.places.Autocomplete(input);
+         autocomplete.bindTo('bounds', map);
+         var autocomplete1 = new google.maps.places.Autocomplete(input1);
+         autocomplete.bindTo('bounds', map);
+         var infowindow = new google.maps.InfoWindow();
+         var marker = new google.maps.Marker({
+             map: map,
+             anchorPoint: new google.maps.Point(0, -29)
+
+         });
+         marker = new google.maps.Marker({
+             map: map,
+             draggable: true,
+             animation: google.maps.Animation.DROP,
+             position: map.center
+
+
+         });
+         marker.setMap(map);
+         marker.addListener('click', toggleBounce);
+
+
+         google.maps.event.addListener(marker, 'drag', function(event) {
+
+
+         });
+
+
+
+
+
+
+         autocomplete.addListener('place_changed', function() {
+             infowindow.close();
+             marker.setVisible(false);
+
+             var place = autocomplete.getPlace();
+
+             // If the place has a geometry, then present it on a map.
+             if (place.geometry.viewport) {
+                 map.fitBounds(place.geometry.viewport);
+
+             } else {
+
+                 map.setCenter(place.geometry.location);
+                 map.setZoom(10);  // Why 17? Because it looks good.
+
+             }
+
+
+             ;
+             marker.setPosition(place.geometry.location);
+             marker.setVisible(true);
+
+
+             var address = '';
+             if (place.address_components) {
+                 address = [
+                     (place.address_components[0] && place.address_components[0].short_name || ''),
+                     (place.address_components[1] && place.address_components[1].short_name || ''),
+                     (place.address_components[2] && place.address_components[2].short_name || '')
+                 ].join(' ');
+             }
+
+             infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+             infowindow.open(map, marker);
+         });
+
+         // Sets a listener on a radio button to change the filter type on Places
+         // Autocomplete.
+         function setupClickListener(id, types) {
+             var radioButton = document.getElementById(id);
+             radioButton.addEventListener('click', function() {
+                 autocomplete.setTypes(types);
+                 autocomplete1.setTypes(types);
+             });
+         }
+
+
+     }
+     function toggleBounce() {
+         if (marker.getAnimation() !== null) {
+             marker.setAnimation(null);
+         } else {
+             marker.setAnimation(google.maps.Animation.BOUNCE);
+         }
+     }
+ </script>
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBN5BlbnsC04RC40wvaZfm7QrwgFX8IhIU&libraries=places&callback=initMap"
+         async defer></script>
+
+{% endblock body %}

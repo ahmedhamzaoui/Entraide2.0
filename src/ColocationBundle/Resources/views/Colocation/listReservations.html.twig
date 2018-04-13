@@ -1,0 +1,45 @@
+
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        {% for colocation in resuser %}
+            <section>
+
+                    <div class="container">
+                        <div class="col-md-6 col-md-offset-1 col-sm-5 col-sm-offset-1 feature bordered text-center">
+                            <h3>Liste des Reservations Reçus</h3>
+                            <h6 class="uppercase mb16">Nom :  {{ colocation.idUser.nom }}</h6>
+                            <ul>
+
+                                <li>
+                                    Nombre de place réservée: {{ colocation.nbplace }}
+                                </li>
+                                <li>
+                                    date de réservation :  {{ colocation.dateRes | date}}
+                                </li>
+                                <li>
+                                    Votre Annonce de Titre:  {{ colocation.idColocation.titre }}
+                                </li>
+
+
+                            </ul>
+
+                            <td>
+                                <a class="btn-lg btn"  href="{{ path('confirmer_res',{'id':colocation.id}) }}">Confirmer </a>
+                            </td>
+                                <td>
+                                    <a class="btn-lg btn"  href="{{ path('refuser_res',{'id':colocation.id}) }}">Refuser </a>
+                                </td>
+
+                        </div>
+
+                    </div>
+            </section>
+        {% endfor %}
+    </div>
+</div>
+    {% endblock %}
+

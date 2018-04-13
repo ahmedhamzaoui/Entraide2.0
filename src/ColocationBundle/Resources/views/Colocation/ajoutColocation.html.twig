@@ -1,0 +1,311 @@
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <style>
+        #map {
+            height: 700px;
+
+        }
+        .pac-container {
+            font-family: Roboto;
+        }
+
+        #type-selector {
+            color: #fff;
+            background-color: #4d90fe;
+            padding: 5px 11px 0px 11px;
+        }
+
+        #type-selector label {
+            font-family: Roboto;
+            font-size: 13px;
+            font-weight: 300;
+        }
+
+        [type="input"] {
+            background:#f6f6f6;
+        }
+
+        [type="date"] {
+            border-radius:0px 0px 0px 0px;
+
+            line-height: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            background:#f6f6f6 url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_1.png)  97% 50% no-repeat ;
+        } [type="time"] {
+              border-radius:0px 0px 0px 0px;
+
+              line-height: 20px;
+              font-size: 12px;
+              font-weight: bold;
+              background:#f6f6f6 url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
+          }
+
+        [type="date"]::-webkit-inner-spin-button {
+
+            display: none;
+        }
+        [type="date"]::-webkit-calendar-picker-indicator {
+            opacity: 0;
+        }
+
+        .btn-file {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: inline-block;
+        }
+    </style>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
+    <link   href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css">
+
+    <section class="page-title page-title-4 bg-secondary" style="height: 120px">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 class="uppercase mb0">
+                        <i class="ti-pencil-alt"></i> Ajoutez Votre Annonce:</h3>
+                </div>
+                <di>
+
+                </di>
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+    <br><!--<div class="col-md-3"></div>-->
+    <div class="col-md-1"></div>
+    <div class="col-md-4">
+        {{ form_start(c) }}
+        <table>
+            <tr>
+                <td>
+                    {{ form_label(c.titre) }}
+                </td>
+                <td>
+                    {{ form_widget(c.titre) }}
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    {{ form_label(c.typeLog) }}
+                </td>
+                <td>
+                    {{ form_widget(c.typeLog) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ form_label(c.meuble) }}
+                </td>
+                <td>
+                    {{ form_widget(c.meuble) }}
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    {{ form_label(c.prix) }}
+                </td>
+                <td>
+                    {{ form_widget(c.prix) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ form_label(c.nbchambre) }}
+                </td>
+                <td>
+                    {{ form_widget(c.nbchambre) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ form_label(c.etage) }}
+                </td>
+                <td>
+                    {{ form_widget(c.etage) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ form_label(c.dateDispo) }}
+                </td>
+                <td>
+                    <div class="full-width">
+                        {{ form_widget(c.dateDispo,{ 'attr' : {'class':'form-control datepicker','id':'datepicker','placeholder':'date'}}) }}
+                        {{form_errors(c.dateDispo)}}
+                    </div>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    {{ form_label(c.nbpersonne) }}
+                </td>
+                <td>
+                    {{ form_widget(c.nbpersonne) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ form_label(c.adresse) }}
+                </td>
+                <td>
+                    {{ form_widget(c.adresse) }}
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    {{ form_label(c.photo) }}
+                </td>
+                <td>
+                    {{ form_widget(c.photo) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+                <td>
+                    {{ form_end(c) }}
+                </td>
+            </tr>
+        </table>
+
+        {{ form_end(c) }}
+
+
+    </div>
+    <div class="col-md-5" id="map">
+    </div>
+
+
+    <script>
+
+
+
+
+
+        // This example requires the Places library. Include the libraries=places
+        // parameter when you first load the API. For example:
+        // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+        var marker;
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 36, lng: 10},
+                zoom: 10
+            });
+            var input = /** @type {!HTMLInputElement} */(
+                document.getElementById('colocationbundle_colocation_adresse'));
+
+
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.bindTo('bounds', map);
+
+            var infowindow = new google.maps.InfoWindow();
+            var marker = new google.maps.Marker({
+                map: map,
+                anchorPoint: new google.maps.Point(0, -29)
+
+            });
+            marker = new google.maps.Marker({
+                map: map,
+                draggable: true,
+                animation: google.maps.Animation.DROP,
+                position: map.center
+
+
+            });
+            marker.setMap(map);
+            marker.addListener('click', toggleBounce);
+
+
+            google.maps.event.addListener(marker, 'drag', function(event) {
+
+
+            });
+
+
+
+
+
+
+            autocomplete.addListener('place_changed', function() {
+                infowindow.close();
+                marker.setVisible(false);
+
+                var place = autocomplete.getPlace();
+
+                // If the place has a geometry, then present it on a map.
+                if (place.geometry.viewport) {
+                    map.fitBounds(place.geometry.viewport);
+
+                } else {
+
+                    map.setCenter(place.geometry.location);
+                    map.setZoom(10);  // Why 17? Because it looks good.
+
+                }
+
+
+                ;
+                marker.setPosition(place.geometry.location);
+                marker.setVisible(true);
+
+
+                var address = '';
+                if (place.address_components) {
+                    address = [
+                        (place.address_components[0] && place.address_components[0].short_name || ''),
+                        (place.address_components[1] && place.address_components[1].short_name || ''),
+                        (place.address_components[2] && place.address_components[2].short_name || '')
+                    ].join(' ');
+                }
+
+                infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+                infowindow.open(map, marker);
+            });
+
+            // Sets a listener on a radio button to change the filter type on Places
+            // Autocomplete.
+            function setupClickListener(id, types) {
+                var radioButton = document.getElementById(id);
+                radioButton.addEventListener('click', function() {
+                    autocomplete.setTypes(types);
+                });
+            }
+
+
+        }
+        function toggleBounce() {
+            if (marker.getAnimation() !== null) {
+                marker.setAnimation(null);
+            } else {
+                marker.setAnimation(google.maps.Animation.BOUNCE);
+            }
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_Y-cLVEP0xzja-900Y1FDSCT_YCwk0xc&libraries=places&callback=initMap"
+            async defer></script>
+
+{% endblock %}

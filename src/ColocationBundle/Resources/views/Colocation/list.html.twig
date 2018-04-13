@@ -1,0 +1,155 @@
+
+{% extends "::base.html.twig" %}
+
+{% block body %}
+<script type="text/javascript" src="http://www.datejs.com/build/date.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+<script>
+    $(function () {
+        $('#c').keyup(function () {
+            abcd =  $("#c").val();
+            DATA = 's='+abcd;
+            //alert(abcd);
+            $.ajax({
+
+                url : '{{ path("recherche_ajax_colocations") }}',
+                data:DATA,
+                success : function(response){
+                    $("#tab").html(
+                        "<table id='tab1'  class='table  table-bordered table-hover'>" +
+                        "        <tr>\n" +
+                        "            <thead>" +"<tr>\n"+"</tr>"+
+
+                        "            </thead>" +
+
+
+
+                        "\n" +
+                        "</tr>" +
+                        "" +
+                        "</table>"
+                    );
+                    $.each(response,function(k,el){
+
+                        $('#tab').append(
+                            "<tbody>" +
+                            "<tr  class=''>" +
+                            "<td>"+"<ul>"+"<li>"+"Type de logement est :"+el.typeLog +"</li>"+"</ul>"+"</td>"+"</tr>" +
+                            "<tr>" +
+                            "<td>"+"<ul>"+"<li>"+"Nombre de personne :"+el.nbpersonne+"</li>"+"</ul>"+"</td>"+"</tr>" +
+                            "<tr>" +
+                            "<td>"+"<ul>"+"<li>"+"rix :"+el.prix+"</li>"+"</ul>"+"</td>"+"</tr>" +
+                            "<tr>" +
+                            "<td>"+"<ul>"+"<li>"+" Adresse : "+el.adresse+"</li>"+"</ul>"+"</td>"+"</tr>" +
+
+                            "<td>"+"<ul>"+"<p>"+"******************"+"</p>"+"</ul>"+"</td>"+"</tr>" +
+
+
+
+
+                            "</tbody>"
+
+                        )
+                    })
+
+
+                },
+            })
+        })
+    })
+</script>
+    <section class="overlay fullscreen parallax image-bg pt0 pb0">
+        <div class="background-image-holder fadeIn" style="transform: translate3d(0px, -556.17px, 0px); background: url(&quot;img/cover11.jpg&quot;);">
+            <img alt="Background" class="background-image" src="img/cover11.jpg" style="display: none;">
+        </div>
+        <div class="container v-align-transform">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1 text-center">
+
+                    <form action="" method="POST" class="halves form-newsletter" data-success="Thanks for your submission, we will be in touch shortly." data-error="Please fill all fields correctly.">
+                        <p>
+                            <label>Prix Min:</label>
+                            <input type="range" name="prixMin"  min="0" max="1000"
+                                   oninput="document.getElementById('fPrice').innerHTML = this.value" />
+                            <label id="fPrice"></label>
+                        </p>
+                        <p>
+                            <label>Prix Max:</label>
+                            <input type="range" name="prixMax"  min="0" max="1000"
+                                   oninput="document.getElementById('fPri').innerHTML = this.value" />
+                            <label id="fPri"></label>
+                        </p>
+                        <button type="submit">ReChercher</button>
+
+                    </form>
+                </div>
+                <div class="col-sm-10 col-sm-offset-1 text-center">
+                    <form  class="halves form-newsletter" data-success="Thanks for your submission, we will be in touch shortly." data-error="Please fill all fields correctly.">
+                        <input type="text" name="cher" id="c"  placeholder="Chercher .." />
+
+                    </form>
+                </div>
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+
+
+<section>
+    <div class="container">
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-sm-10 col-sm-offset-1 col-md-offset-2">
+                {% for colocation in colocations %}
+                <div class="horizontal-tile">
+                    <div class="tile-left">
+                        <a href="#">
+                            <div class="background-image-holder fadeIn" style="background: url({{ asset('uploads/images/' ~ colocation.getPhoto()) }});">
+                                <img alt="image" class="background-image" src="{{ asset('uploads/images/' ~ colocation.getPhoto()) }}" style="display: none;">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="tile-right bg-secondary">
+                        <div class="description">
+                            <h4 class="mb8">Union Marriages</h4>
+                            <h6 class="uppercase">
+                                Graphic Design
+                            </h6>
+                            <p>
+                            <ul>
+
+                                <li>
+                                    Nombre de personne : {{ colocation.nbpersonne }}
+                                </li>
+                                <li>
+                                    Prix :  {{ colocation.prix }}
+                                </li>
+                                <li>
+                                    Adresse :  {{ colocation.adresse }}
+                                </li>
+                                <li>
+                                    <h6>
+
+                                        Si vous connaissez ce logement donner votre avis :  <a href="{{ path('colocation_rating',{'id':colocation.id}) }}">Rating</a>
+                                    </h6>
+
+                                </li>
+
+
+                            </ul>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}
+

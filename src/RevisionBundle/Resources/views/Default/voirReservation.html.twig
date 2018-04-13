@@ -1,0 +1,39 @@
+{% extends "::base.html.twig" %}
+{% block javascripts %}
+    <section class="page-title page-title-2 image-bg overlay">
+    <div class="background-image-holder fadeIn" style="background-image: url('{{ asset('uploads/images/cover12.jpg') }}');">
+        <img alt="Background Image" class="background-image" src="{{ asset('uploads/images/is.jpg') }}" style="display: none;">
+
+
+    </div>
+    </section>
+<br>
+<br>
+<br>
+<br>
+    <center>
+    <table class="table-responsive" border="5" style="width: 600px;height: 300px;" bgcolor="#ffe4c4">
+    <tr style="font-size: 16px; font-weight: bold; color: #0000F0;text-align: center">
+        <th >nom</th>
+        <th>salle</th>
+        <th>date debut</th>
+        <th>date fin</th>
+        <th>Etat de reservation</th>
+
+    </tr>
+{% for val in valide %}
+    <tr>
+        <td>{{ val.user }}</td>
+        <td>{{ val.salle }}</td>
+        <td>{{ val.dateTime1|date }}</td>
+        <td>{{ val.dateTime2|date }}</td>
+        <td>votre reservation est accepté</td>
+    </tr>
+
+    {% endfor %}
+</table>
+    </center>
+  <center>  <a href="{{ path('pdf') }}"><button>telecharger</button></a></center>
+
+
+{% endblock %}

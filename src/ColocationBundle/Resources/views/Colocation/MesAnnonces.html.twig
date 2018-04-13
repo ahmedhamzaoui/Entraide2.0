@@ -1,0 +1,70 @@
+
+{% extends "::base.html.twig" %}
+{% block body %}
+    <div class="main-container">
+        <section class="page-title page-title-4 bg-secondary">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3 class="uppercase mb0">
+                            <i class="ti-layout-list-large-image"></i> Liste des Annonces </h3>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <ol class="breadcrumb breadcrumb-2">
+                            <li>
+                                <a href="index-2.html">Home</a>
+                            </li>
+                            <li>
+                                <a href="#">Elements</a>
+                            </li>
+                            <li class="active">Text & Image</li>
+                        </ol>
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </section>
+
+        <div class="row">
+
+            {% for colocation in colocations %}
+
+                <section class="image-edge">
+                    <div class="col-md-6 col-sm-4 p0 ">
+                        <img alt="Screenshot" class="mb-xs-24" src="{{ asset('uploads/images/' ~ colocation.getPhoto()) }}" />
+                    </div>
+                    <div class="container">
+                        <div class="col-md-5 col-md-offset-1 col-sm-7 col-sm-offset-1 v-align-transform right ">
+                            <h1 class="large mb40 mb-xs-16">Hey,Annonce.</h1>
+                            <h6 class="uppercase mb16">Type de logement est :  {{ colocation.typeLog }}</h6>
+                            <ul>
+
+                               <h1> {{ colocation.datedispo|ago }} </h1>
+                                <li>
+                                    Nombre de personne : {{ colocation.nbpersonne }}
+                                </li>
+                                <li>
+                                    Prix :  {{ colocation.prix }}
+                                </li>
+                                <li>
+                                    Adresse :  {{ colocation.adresse }}
+                                </li>
+
+
+                            </ul>
+                            <td><a href="{{ path('colocation_modif',{'id':colocation.id}) }}">Modifier</a></td>
+                            <td><a href="{{ path('colocation_supp',{'id':colocation.id}) }}">Supprimer</a></td>
+                        </div>
+                    </div>
+                </section>
+            {% endfor %}
+            <!--end of horizontal tile-->
+        </div>
+
+
+    </div>
+
+
+{% endblock %}
+

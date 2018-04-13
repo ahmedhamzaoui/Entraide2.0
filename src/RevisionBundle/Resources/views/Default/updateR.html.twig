@@ -1,0 +1,46 @@
+{% extends "::base.html.twig" %}
+{% block javascripts %}
+
+    <div class="row">
+        <div class="col-sm-6">
+            <center> <h4 class="uppercase mb16">Modifier Revision</h4></center>
+            {{ form_start(form) }}
+
+            {{ form_widget(form.matiere) }}
+            {{ form_widget(form.module) }}
+            {{ form_widget(form.fichier) }}
+            {#{{ form_widget(form.datePub|date('Y-m-d') ) }}#}
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+
+    </div>
+    </div>
+    {#<center>#}
+
+    {#<h1>Welcome to the Modele:create page</h1>#}
+    {#<fieldset style="width: 50%;">#}
+    {#<table>#}
+    {#{{ form_start(form) }}#}
+    {#<tr>#}
+    {#<td>Matiere</td>#}
+    {#<td>{{ form_widget(form.matiere) }}</td>#}
+    {#</tr>#}
+
+    {#<tr>#}
+    {#<td>Module</td>#}
+    {#<td>{{ form_widget(form.module) }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<td>Date de publication</td>#}
+    {#<td>{{ form_widget(form.datePub)|date('Y-m-d') }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<td>{{ form_widget(form.save) }}</td>#}
+    {#</tr>#}
+    {#</table>#}
+    {#{{ form_end(form) }}#}
+    {#</fieldset>#}
+    {#</center>#}
+{% endblock %}

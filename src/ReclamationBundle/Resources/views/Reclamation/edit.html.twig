@@ -1,0 +1,258 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Modifier{% endblock %}
+
+{% block body %}
+    <style>
+        form {
+            width: 60%;
+        }
+        [type="date"] {
+            border-radius:0px 0px 0px 0px;
+
+            line-height: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            background:#f6f6f6 url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_1.png)  98% 50% no-repeat ;
+        } [type="time"] {
+              border-radius:0px 0px 0px 0px;
+
+              line-height: 20px;
+              font-size: 12px;
+              font-weight: bold;
+              background:#f6f6f6 url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  98% 50% no-repeat ;
+          }
+
+        [type="date"]::-webkit-inner-spin-button {
+
+            display: none;
+        }
+        [type="date"]::-webkit-calendar-picker-indicator {
+            opacity: 0;
+        }
+
+    </style>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
+    <link   href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css">
+
+    <body class="scroll-assist">
+
+    <div class="main-container">
+        <section class="page-title page-title-2 image-bg overlay parallax">
+            <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 0px, 0px); background: url({{ asset('img/home21.jpg' ) }}); top: -100px;">
+                <img alt="Background Image" class="background-image" src="{{ asset('img/home21.jpg' ) }}" style="display: none;">
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2 class="uppercase mb8">Reclamation Objet Perdu/Trouvé</h2>
+                        <p class="lead mb0">Veuillez modifier votre reclamation!</p>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <ol class="breadcrumb breadcrumb-2">
+                            <li>
+                                <a href="{{ path('acceuilRec') }}">Home</a>
+                            </li>
+                            <li>
+                                <a href="#">Pages</a>
+                            </li>
+                            <li class="active">Plan A Project</li>
+                        </ol>
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </section>
+
+
+
+
+
+
+
+            <section>
+                <div class="container">
+                    <div class="row">
+                        {{ form_start(form)}}
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="input-with-label text-left">
+                                        <span>Description</span>
+                                    </div>
+                                </td>
+
+
+                                <td>
+                                    {{ form_widget(form.description) }}
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="input-with-label text-left">
+                                        <span>Lieu</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="select-option">
+                                        <i class="ti-angle-down"></i>
+                                        {{ form_widget(form.lieuDecouverte) }}
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="input-with-label text-left">
+                                        <span>Date</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="full-width">
+                                        {{ form_widget(form.dateDecouverte,{ 'attr' : {'class':'form-control datepicker','id':'datepicker','placeholder':'date'}}) }}
+                                        {{form_errors(form.dateDecouverte)}}
+                                        {% if error !="" %}
+                                            <b style="color:red">Veuillez entrer une date valide</b>
+                                        {% endif %}
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="input-with-label text-left">
+                                        <span>Type d'objet</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="select-option">
+                                        <i class="ti-angle-down"></i>
+                                        {{ form_widget(form.typeobjPerdu) }}
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="input-with-label text-left">
+                                        <span>Autre type d'objet</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    {{ form_widget(form.autretypeobjPerdu) }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="input-with-label text-left">
+                                        <span>Type de Reclamation</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="select-option">
+                                        <i class="ti-angle-down"></i>
+                                        {{ form_widget(form.type) }}
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="input-with-label text-left">
+                                        <span>Ou exactement ?</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="select-option">
+                                        <i class="ti-angle-down"></i>
+                                        {{ form_widget(form.localisation) }}
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="input-with-label text-left">
+                                        <span>autre type</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    {{ form_widget(form.autrelocalisation) }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="input-with-label text-left">
+                                        <span>Etage</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="select-option">
+                                        <i class="ti-angle-down"></i>
+                                        {{ form_widget(form.etage) }}
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="input-with-label text-left">
+                                        <span>Salle</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    {{ form_widget(form.salle) }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="input-with-label text-left">
+                                        <span>Photo</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    {{ form_widget(form.photo) }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+
+                                </td>
+                                <td>
+                                    {{ form_end(form) }}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!--end of row-->
+            </section>
+
+
+
+
+
+
+
+    <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/jrdbn46n';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+    <script>
+        $('document').ready(function ()
+        {
+            $('#reclamationbundle_reclamation_typeobjPerdu').change(function ()
+            {
+                var x = $( "#reclamationbundle_reclamation_typeobjPerdu" ).val();
+                if (x == 'Autre')
+                {
+                    $('#fio').show();
+                }
+            });
+        });
+    </script>
+    </div>
+    </body>
+
+    <!-- Mirrored from foundry.mediumra.re/elements-form-inputs.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 19 Mar 2018 11:16:14 GMT -->
+    </html>
+{% endblock %}

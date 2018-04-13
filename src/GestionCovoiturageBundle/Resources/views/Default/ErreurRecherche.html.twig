@@ -1,0 +1,15 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+<center>
+    <h3>
+        Aucun trajet ne correspond à vos critères.
+    </h3>
+    <table>
+        <tr>
+            <td><a class="btn" href="{{ path('acceuil_cov') }}">Effectuer une nouvelle Recherche</a></td>
+            <td><a class="btn" href="{{ path('ajout_covoiturage') }}">Ajouter un trajet</a></td>
+        </tr>
+    </table>
+
+</center>
+{% endblock body %}

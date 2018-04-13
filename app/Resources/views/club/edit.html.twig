@@ -1,0 +1,37 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block body %}
+    <h1>Modifier club <u>{{ club.nom }}</u></h1>
+
+    {{ form_start(edit_form) }}
+    <div class="full-width">
+        {{ form_widget(edit_form.nom,{ 'attr' : {'class':'form-control','id':'description','placeholder':'Nom Club'}}) }}
+        {{form_errors(edit_form.nom)}}
+    </div>
+    <br>
+    <div class="full-width">
+        {{ form_widget(edit_form.description,{ 'attr' : {'class':'form-control','id':'description','placeholder':'Description de Club'}}) }}
+        {{form_errors(edit_form.description)}}
+    </div>
+    <br>
+    <div class="full-width">
+        {{ form_widget(edit_form.photo,{ 'attr' : {'class':'form-control','id':'description','placeholder':'Photo de Club'}}) }}
+        {{form_errors(edit_form.photo)}}
+    </div>
+    <br>
+    <div class="full-width">
+        {{ form_widget(edit_form.idUser,{ 'attr' : {'class':'form-control','id':'description','placeholder':'Responsable de Club'}}) }}
+        {{form_errors(edit_form.idUser)}}
+    </div>
+    <br>
+    <div class="full-width">
+        {{ form_widget(edit_form.nom,{ 'attr' : {'class':'form-control','id':'description','placeholder':'Nom Club'}}) }}
+        {{form_errors(edit_form.description)}}
+    </div>
+
+    {{ form_widget(edit_form) }}
+    <input type="submit"  class="btn btn-danger btn-block" value="Modifier Club" />
+    {{ form_end(edit_form) }}
+
+
+{% endblock %}

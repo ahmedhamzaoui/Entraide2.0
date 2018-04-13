@@ -1,0 +1,43 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+
+<body class="scroll-assist">
+<div class="main-container">
+    <section class="cover fullscreen image-slider slider-all-controls controls-inside parallax">
+        <ul class="slides">
+            <li class="overlay image-bg">
+
+                <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 0px, 0px); background: url({{ asset('img/mycolocation.jpg' ) }}); top: -100px;">
+                    <img alt="Background Image" class="background-image" src="{{ asset('img/colocation.jpg' ) }}" style="display: none;">
+                </div>
+                <div class="container v-align-transform">
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1 col-sm-12 text-center">
+                            <h1 class="mb8">Trouvez votre colocation idéale</h1>
+                            <form action="" method="post" class="halves form-newsletter" data-success="Thanks for your submission, we will be in touch shortly." data-error="Please fill all fields correctly.">
+                            <input type="text" name="adresse"   placeholder="Où  souhaitez-vous vivre ?" />
+                            <button type="submit">Chercher</button>
+                                <label>Vous recherchez un locataire ?</label>
+                                <td><a href="{{ path('colocation_add') }}">PUBLIEZ VOTRE ANNONCE</a></td>
+
+                            </form>
+                            <form class="form-newsletter thirds" data-success="Thanks for your submission, we will be in touch shortly." data-error="Please fill all fields correctly.">
+
+                            </form>
+
+
+
+                    </div>
+                </div>
+                <!--end of row-->
+
+<!--end of container-->
+</li>
+</ul>
+</section>
+
+
+</body>
+
+<!-- Mirrored from foundry.mediumra.re/home-default-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 19 Mar 2018 11:15:27 GMT -->
+{% endblock %}

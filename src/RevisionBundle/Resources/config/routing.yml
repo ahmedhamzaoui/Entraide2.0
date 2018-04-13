@@ -1,0 +1,33 @@
+revision_homepage:
+    path:     /
+    defaults: { _controller: RevisionBundle:Default:index }
+revision_ajout:
+    path:     /ajout
+    defaults: { _controller: RevisionBundle:Revision:ajouter}
+revision_aff:
+    path:     /list
+    defaults: { _controller: RevisionBundle:Revision:affiche}
+revision_mod:
+    path:     /mod/{id}
+    defaults: { _controller: RevisionBundle:Revision:update}
+revision_supp:
+    path:     /supp/{id}
+    defaults: { _controller: RevisionBundle:Revision:deleteE}
+_ajax:
+    path: /recherche/search
+    defaults: { _controller: RevisionBundle:Revision:rechercheAjax}
+reservation_salle:
+    path:     /reserver
+    defaults: { _controller: RevisionBundle:Revision:ajouterReservation}
+admin:
+    path:     /admin
+    defaults: { _controller: RevisionBundle:Revision:admin}
+reservation_valide:
+    path:     /valider/{id}
+    defaults: { _controller: RevisionBundle:Revision:reservation_valide}
+voir_reservation:
+    path:     /voir
+    defaults: { _controller: RevisionBundle:Revision:voir_reservation}
+pdf:
+    path:     /pdf
+    defaults: { _controller: RevisionBundle:Revision:pdf}

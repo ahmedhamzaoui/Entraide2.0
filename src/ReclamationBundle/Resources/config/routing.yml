@@ -1,0 +1,112 @@
+reclamation_homepage:
+    path:     /
+    defaults: { _controller: ReclamationBundle:Default:index }
+
+reclamation_homepage_admin:
+    path:     /Home
+    defaults: { _controller: ReclamationBundle:Default:indexadmin }
+
+add:
+    path:     /add
+    defaults: { _controller: ReclamationBundle:Reclamation:add }
+
+edit:
+    path:     /edit/{id}
+    defaults: { _controller: ReclamationBundle:Reclamation:edit }
+
+delete:
+    path:     /delete/{id}
+    defaults: { _controller: ReclamationBundle:Reclamation:delete }
+
+recherche:
+    path:     /recherche
+    defaults: { _controller: ReclamationBundle:Reclamation:recherche }
+
+purge:
+    path:     /purge
+    defaults: { _controller: ReclamationBundle:Reclamation:purge }
+
+addMal:
+    path:     /addMal
+    defaults: { _controller: ReclamationBundle:Reclamation:addMal }
+
+editMal:
+    path:     /editMal/{id}
+    defaults: { _controller: ReclamationBundle:Reclamation:editMal }
+
+rechercheMal:
+    path:     /rechercheMal
+    defaults: { _controller: ReclamationBundle:Reclamation:rechercheMal }
+
+deleteMal:
+    path:     /deleteMal/{id}
+    defaults: { _controller: ReclamationBundle:Reclamation:deleteMal }
+
+acceuilRec:
+    path:     /acceuilRec
+    defaults: { _controller: ReclamationBundle:Reclamation:acceuilRec }
+
+piechart:
+    path:     /piechart
+    defaults: { _controller: ReclamationBundle:Reclamation:index }
+
+barchart:
+    path:     /barchart
+    defaults: { _controller: ReclamationBundle:Reclamation:index2 }
+
+my_app_mail_accuse:
+    path: /success
+    defaults: { _controller: ReclamationBundle:Reclamation:success }
+
+findByMatricule:
+    path: /findByMatricule
+    defaults: { _controller: ReclamationBundle:Reclamation:findByMatricule }
+
+afficheradmin:
+    path:     /afficheradmin
+    defaults: { _controller: ReclamationBundle:Reclamation:AfficherAdmin }
+
+valideradmin:
+    path:     /valideradmin/{id}
+    defaults: { _controller: ReclamationBundle:Reclamation:ValiderAdmin }
+
+deleteadmin:
+    path:     /deleteadmin/{id}
+    defaults: { _controller: ReclamationBundle:Reclamation:deleteAdmin }
+
+affichertoutes:
+    path:     /affichertoutes
+    defaults: { _controller: ReclamationBundle:Reclamation:affichertoutes }
+
+affichertoutesMal:
+    path:     /affichertoutesMal
+    defaults: { _controller: ReclamationBundle:Reclamation:affichertoutesMal }
+
+recuperer:
+    path:     /recuperer/{id}
+    defaults: { _controller: ReclamationBundle:Reclamation:Recuperer }
+
+rendu:
+    path:     /rendu/{id}
+    defaults: { _controller: ReclamationBundle:Reclamation:Rendu }
+
+piechart2:
+    path:     /piechart2
+    defaults: { _controller: ReclamationBundle:Reclamation:index3 }
+
+contactcbon1:
+    path:     /contactcbon1/{id}
+    defaults: { _controller: ReclamationBundle:Reclamation:Contact1 }
+
+contactcbon2:
+    path:     /contactcbon2/{id}
+    defaults: { _controller: ReclamationBundle:Reclamation:Contact2 }
+
+rechercheajax:
+    path:     /rechercheajax
+    defaults: { _controller: ReclamationBundle:Reclamation:rechercheajax }
+
+deleteexpiration:
+    path:     /deleteexpiration/{id}
+    defaults: { _controller: ReclamationBundle:Reclamation:DeleteExpiration }
+

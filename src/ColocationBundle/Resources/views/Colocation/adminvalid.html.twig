@@ -1,0 +1,21 @@
+{% for a in add %}
+                    <ul>
+
+                        <li>
+                            Nombre de personne : {{ a .nbpersonne }}
+                        </li>
+                        <li>
+                            Prix :  {{ a .prix }}
+                        </li>
+                        <li>
+                            Adresse :  {{ a .adresse }}
+                        </li>
+
+
+                    </ul>
+
+                    <tr> <a class="btn-lg btn"  href="{{ path('Admin_affiche',{'id':a.id}) }}">Valider </a></tr>
+                    <tr> <a class="btn-lg btn"  href="{{ path('Admin_supprimer',{'id':a.id}) }}">Supprimer </a></tr>
+
+
+{% endfor %}

@@ -1,0 +1,85 @@
+colocation_homepage:
+    path:     /
+    defaults: { _controller: ColocationBundle:Default:index }
+
+colocation_homepage_admin:
+    path:     /HomeAdmin
+    defaults: { _controller: ColocationBundle:Default:indexadmin }
+
+colocation_purge:
+    path:    /purge
+    defaults: { _controller: ColocationBundle:Reservationcolocation:purge }
+
+colocation_add:
+    path:     /ajout
+    defaults: { _controller: ColocationBundle:Colocation:add }
+
+colocation_chercher:
+    path:     /chercher
+    defaults: { _controller: ColocationBundle:Colocation:findAdresse }
+
+colocation_list:
+    path:     /list
+    defaults: { _controller: ColocationBundle:Colocation:findAdresse }
+
+Admin_affiche:
+    path:     /aff/listValid
+    defaults: { _controller: ColocationBundle:Colocation:affAdmin }
+
+user_affiche_res:
+    path:     /aff/listReservation
+    defaults: { _controller: ColocationBundle:Reservationcolocation:afflistRese }
+
+confirmer_res:
+    path:     /confirmer/{id}
+    defaults: { _controller: ColocationBundle:Reservationcolocation:confirmer }
+
+refuser_res:
+    path:     /refuser/{id}
+    defaults: { _controller: ColocationBundle:Reservationcolocation:refuserR }
+
+colocation_rating:
+    path:     /rating/{id}
+    defaults: { _controller: ColocationBundle:Colocation:rating }
+
+
+colocation_affiche:
+    path:     /affiche/{id}
+    defaults: { _controller: ColocationBundle:Colocation:affiche }
+
+colocation_affiche_mesAnnonces:
+    path:     /aff/MesAnnonces
+    defaults: { _controller: ColocationBundle:Colocation:affMesAnn }
+
+colocation_modif:
+    path:     /modifier/{id}
+    defaults: { _controller: ColocationBundle:Colocation:modif }
+
+
+colocation_supp:
+    path:     /supprimer/{id}
+    defaults: { _controller: ColocationBundle:Colocation:supprimer }
+
+colocation_en:
+    path:     /envoyer
+    defaults: { _controller: ColocationBundle:Colocation:sendSms }
+
+recherche_ajax_colocations:
+    path:     /colocation/ajax
+    defaults: { _controller: ColocationBundle:Colocation:findAjax }
+
+colocation_reserver:
+    path:     /reservation/{id}
+    defaults: { _controller: ColocationBundle:Reservationcolocation:AjouterReservation,id:0 }
+
+reservation_annuler:
+    path:     /annuler/{id}
+    defaults: { _controller: ColocationBundle:Reservationcolocation:SupprimerR }
+
+colocation_affiche_mesreservations:
+    path:     /aff/MesReservations
+    defaults: { _controller: ColocationBundle:Reservationcolocation:affMesRese }
+
+valider:
+    path:     /valider/{id}
+    defaults: { _controller: ColocationBundle:Colocation:valider }

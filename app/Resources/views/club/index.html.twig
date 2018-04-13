@@ -1,0 +1,41 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block body %}
+    <h1>Liste des Club</h1>
+    <div class="right-action">            <a class="btn btn-default btn-success" href="{{ path('club_new') }}"><i class="fa fa-plus"></i> Ajouter un Club</a>
+    </div>
+<br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Responsable</th>
+                <th>Description</th>
+                <th>Photo</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for club in clubs %}
+            <tr>
+                <td><a href="{{ path('club_show', { 'idclub': club.idclub }) }}"><u>{{ club.nom }}</u></a></td>
+                <td>{{ club.idUser }}</td>
+                <td>{{ club.description }}</td>
+                <td><img src="{{ asset('clubupload/'~club.photo) }}" height="50px"></td>
+                <td>
+                    <ul>
+
+                        {% if is_granted('ROLE_SUPER_ADMIN') %}
+                            <a class="btn btn-lg btn-danger" href="{{ path('club_edit', { 'idclub': club.idclub }) }}">Modifier</a>
+
+
+{% endif %}
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

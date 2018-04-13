@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Entr'aide {% endblock %}</title>
+        {% block stylesheets %}
+            <title>Entr'aide Dashboard</title>
+            <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <link rel="stylesheet" type="text/css" href="{{ asset('bundles/Templateadmin/css/bootstrap.min.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('bundles/Templateadmin/css/font-awesome.min.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('bundles/Templateadmin/css/fullcalendar.min.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('bundles/Templateadmin/css/dataTables.bootstrap.min.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('bundles/Templateadmin/css/select2.min.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('bundles/Templateadmin/css/bootstrap-datetimepicker.min.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('bundles/Templateadmin/css/style.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('bundles/Templateadmin/plugins/morris/morris.css') }}">
+
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+
+    <div class="main-wrapper">
+        <div class="header">
+            <div class="header-left">
+                <a href="{{ path('homepage') }}" class="logo">
+                    <img src="{{ asset('bundles/template/img/esprit.png')  }}"height="40" alt="">
+                </a>
+            </div>
+
+            <div class="page-title-box pull-left">
+                <h3>Entr'aide Dashboard</h3>
+            </div>
+
+            <div class="page-title-box pull-right">
+                <a href="{{ path('fos_user_security_logout') }}" ><h3>Se Deconnecter</h3></a>
+            </div>
+            <a id="mobile_btn" class="mobile_btn pull-left" href="#sidebar"><i class="fa fa-bars" aria-hidden="true"></i></a>
+
+        </div>
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li class="menu-title">Fonction</li>
+                        <li class="active">
+                            <a href="#"><i class="fa fa-dashboard"></i> Home</a>
+                        </li>
+                        <li >
+                            <a href="{{ path('club_index') }}"><i class="fa fa-user-circle-o"></i> Club</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('e_index') }}"><i class="fa fa-calendar" aria-hidden="true"></i> Evenement </a>
+                        </li>
+
+                        <li >
+                            <a href="{{ path('ListCovAdmin') }}"><i class="fa fa-car" aria-hidden="true"></i> <span> Covoiturage</span> </a>
+
+                        </li>
+                        <li>
+                            <a href="{{ path('Admin_affiche') }}"><i class="fa fa-users" aria-hidden="true"></i> Collocation</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin') }}"><i class="fa fa-book" aria-hidden="true"></i> Cours </a>
+                        </li>
+                        <li >
+                            <a href="{{ path('afficheradmin') }}" style="font-size: xx-small" ><i class="fa fa-close" aria-hidden="true"></i> <span><strong> Reclamation/Mal stationnement</strong></span> </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        <div class="content container-fluid">
+            <div class="row">
+
+<div class="col-md-2"></div>
+<div class="col-md-9">
+<br>
+<br>
+<br>
+<br>
+
+            {% block body %}{% endblock %}
+</div>
+            </div></div>
+        {% block javascripts %}
+
+        <script src="{{ asset('bundles/Templateadmin/js/jquery-3.2.1.min.js') }}"></script>
+        <script src="{{ asset('bundles/Templateadmin/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('bundles/Templateadmin/js/jquery.slimscroll.js') }}"></script>
+        <script src="{{ asset('bundles/Templateadmin/js/select2.min.js') }}"></script>
+        <script src="{{ asset('bundles/Templateadmin/js/moment.min.js') }}"></script>
+        <script src="{{ asset('bundles/Templateadmin/js/bootstrap-datetimepicker.min.js') }}"></script>
+        <script src="{{ asset('bundles/Templateadmin/plugins/morris/morris.min.js') }}"></script>
+        <script src="{{ asset('bundles/Templateadmin/plugins/raphael/raphael-min.js') }}"></script>
+        <script src="{{ asset('bundles/Templateadmin/js/app.js') }}"></script>
+
+        {% endblock %}
+    </div> </body>
+</html>

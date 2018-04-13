@@ -1,0 +1,67 @@
+
+{% extends "::base.html.twig" %}
+
+{% block title %}Reclamations Mal stationnement{% endblock %}
+
+{% block body %}
+    <div class="main-container">
+        <section class="page-title page-title-4 bg-secondary">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3 class="uppercase mb0">
+                            <i class="ti-layout-list-large-image"></i>Toutes les reclamations Mal stationnement</h3>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <ol class="breadcrumb breadcrumb-2">
+                            <li>
+                                <a href="index-2.html">Home</a>
+                            </li>
+                            <li>
+                                <a href="#">Elements</a>
+                            </li>
+                            <li class="active">Text & Image</li>
+                        </ol>
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </section>
+        <p>
+
+        </p>
+        <div class="row">
+            <div class="col-md-8 col-sm-10 col-sm-offset-1 col-md-offset-2">
+
+                {% for reclamations in Reclamations %}
+                    <div class="horizontal-tile">
+                        <div class="tile-left">
+                            <a href="#">
+                                <div class="background-image-holder fadeIn" style="background: url({{ asset('uploads/images/' ~ reclamations.getPhoto2()) }});">
+                                    <img alt="image" class="background-image" src="{{ asset('uploads/images/' ~ reclamations.getPhoto2()) }}" style="display: none;">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="tile-right bg-secondary">
+                            <div class="description">
+                                <p>
+                                <ul>
+                                    <li>
+                                        Matricule: {{ reclamations.matricule }}
+                                    </li>
+                                </ul>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                <!--end of horizontal tile-->
+            </div>
+        </div>
+
+
+
+    </div>
+{% endblock %}
+

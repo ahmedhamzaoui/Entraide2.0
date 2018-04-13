@@ -1,0 +1,89 @@
+mgilet_notifications:
+    resource: "@MgiletNotificationBundle/Controller/"
+    prefix: /notifications
+list_Covoiturage:
+    path:     /list
+    defaults: { _controller: GestionCovoiturageBundle:GestionCovoiturage:index }
+
+recherche_annonce:
+    path:     /recAnn
+    defaults: { _controller: GestionCovoiturageBundle:GestionCovoiturage:Recherche }
+
+recherche_annonceprix:
+    path:     /recAnnp
+    defaults: { _controller: GestionCovoiturageBundle:GestionCovoiturage:RecherchePrix }
+
+acceuil_cov:
+    path:     /acceuilcov
+    defaults: { _controller: GestionCovoiturageBundle:GestionCovoiturage:Covoiturage }
+
+
+detail_covoiturage:
+    path:     /detailcov/{id}/{iduser}
+    defaults: { _controller: GestionCovoiturageBundle:GestionCovoiturage:detail }
+
+
+ajout_covoiturage:
+    path:     /ajoutcov
+    defaults: { _controller: GestionCovoiturageBundle:GestionCovoiturage:new }
+
+
+Supprimer_Covoiturage1:
+        path:     /{id}/suppcov1
+        defaults: { _controller: GestionCovoiturageBundle:GestionCovoiturage:delete }
+Supprimer_CovoiturageAdmin:
+        path:     /{id}/suppcovAdmin
+        defaults: { _controller: GestionCovoiturageBundle:GestionCovoiturage:deleteBack }
+
+
+Supprimer_Covoiturage:
+    path:     /{id}/suppcov
+    defaults: { _controller: "GestionCovoiturageBundle:GestionCovoiturage:delete" }
+    methods:  DELETE
+
+
+Mdifier_Covoiturage:
+    path:     /{id}/modifcov
+    defaults: { _controller: "GestionCovoiturageBundle:GestionCovoiturage:edit" }
+    methods:  [GET, POST]
+
+
+mes_covoiturage:
+    path:     /mescov
+    defaults: { _controller: GestionCovoiturageBundle:GestionCovoiturage:Maliste }
+
+erreurCovoiturage:
+    path:     /erreur
+    defaults: { _controller: GestionCovoiturageBundle:GestionCovoiturage:Recherche }
+
+reservationcov:
+    path:     /reservation/{id}
+    defaults: { _controller: GestionCovoiturageBundle:Reservationcovoiturage:AjouterReservation }
+mesreservationcov:
+    path:     /mesreservation
+    defaults: { _controller: GestionCovoiturageBundle:Reservationcovoiturage:affRes }
+AnnulerReservation:
+    path:     /annulerreservation/{id}
+    defaults: { _controller: GestionCovoiturageBundle:Reservationcovoiturage:AnnulerRes }
+mesdemandereservationcov:
+    path:     /mesdemandereservation
+    defaults: { _controller: GestionCovoiturageBundle:Reservationcovoiturage:AffDemandeRes }
+AccepterReservation:
+    path:     /accepterreservation/{id}/{idc}
+    defaults: { _controller: GestionCovoiturageBundle:Reservationcovoiturage:AccepterReservation }
+DeclinerReservation:
+    path:     /declinerreservation/{id}
+    defaults: { _controller: GestionCovoiturageBundle:Reservationcovoiturage:declinerRes }
+DeclinerReservationAdmin:
+    path:     /declinerreservationadmin/{id}
+    defaults: { _controller: GestionCovoiturageBundle:Reservationcovoiturage:declinerResAdmin }
+ContacterConducteur:
+    path:     /Contacter
+    defaults: { _controller: GestionCovoiturageBundle:GestionCovoiturage:Contact }
+ListCovAdmin:
+    path:     /ListCovAdmin
+    defaults: { _controller: GestionCovoiturageBundle:GestionCovoiturage:ListAdmin }
+ListResAdmin:
+    path:     /ListResAdmin
+    defaults: { _controller: GestionCovoiturageBundle:Reservationcovoiturage:ListResAdmin }
+

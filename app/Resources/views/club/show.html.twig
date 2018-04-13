@@ -1,0 +1,57 @@
+{% extends "baseadmin.html.twig"%}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="blog-view">
+                <article class="blog blog-single-post">
+                    <h3 class="blog-title">{{ club.nom }}</h3>
+                    <div class="blog-info clearfix">
+
+                        <div class="post-left"><i class="fa fa-user-o" aria-hidden="true"></i> <span> Responsable :{{ club.idUser }}</span>,&emsp;
+                            <i class="fa fa-users" aria-hidden="true"></i> <span> Nombre des membres : {{ membre|length }}</span>
+                        </div>
+                    </div>
+                    <div class="blog-image">
+                        <a href="#"><img alt="" src="{{ asset('clubupload/'~club.photo) }}" height="516px" class="img-responsive"></a>
+                    </div>
+                    <div class="blog-content">
+                        <blockquote>
+                            <p>{{ club.description }}</p>
+                        </blockquote>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <aside class="col-sm-4">
+
+            <div class="widget post-widget">
+                <h5>Derniers Evenements du Club </h5>
+                <ul class="latest-posts">
+
+                    {% for evenement in evenements %}
+                    <li>
+                        <div class="post-thumb">
+                            <a href="{{ path('e_show',{'id':evenement.id}) }}">
+                                <img class="img-responsive" src="{{ asset('eventupload/'~ evenement.photo)}}" alt="">
+                            </a>
+                        </div>
+                        <div class="post-info">
+                            <h4>
+                                <a href="{{ path('e_show',{'id':evenement.id}) }}">{{ evenement.nom }}</a>
+                            </h4>
+                            <p><i aria-hidden="true" class="fa fa-calendar"></i> &emsp;{{ evenement.date|date('F,  d, Y') }} &emsp; {{ evenement.heure|date('H:i') }}</p>
+                        </div>
+                    </li>
+
+
+
+                    {% endfor %}
+                </ul>
+            </div>
+
+        </aside>
+    </div>
+
+{% endblock %}

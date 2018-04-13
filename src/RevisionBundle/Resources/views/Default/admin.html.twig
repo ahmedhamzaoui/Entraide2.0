@@ -1,0 +1,48 @@
+{% extends "::baseadmin.html.twig" %}
+{% block body %}
+    {{ dump(reservation) }}
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Etudiant</th>
+                    <th>salle</th>
+                    <th>date debut</th>
+                    <th>date fin</th>
+                    <th>nombre de personne</th>
+                    <th>valider la reservation</th>
+                </tr>
+                </thead>
+                {% for reserv in reservation  %}
+                <tbody>
+                <tr>
+                    <td>{{ reserv.user }}</td>
+                    <td>{{ reserv.salle }}</td>
+                    <td>{{ reserv.dateTime1|date }}</td>
+                    <td>{{ reserv.dateTime2|date }}</td>
+                    <td>{{ reserv.nbPersonnes }}
+                    <td><a href="{{ path('reservation_valide',{'id':reserv.id}) }}"><button>valider</button></a></td>
+                </tr>
+
+                </tbody>
+                    {% endfor %}
+            </table>
+
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

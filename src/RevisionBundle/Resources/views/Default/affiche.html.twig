@@ -1,0 +1,167 @@
+{% extends "::base.html.twig" %}
+{% block javascripts %}
+    {#{% for j in courss %}#}
+
+{#<div class="col-md-3 col-sm-6 col-xs-12 block">#}
+    {#<div class="thumbnail thumbnailContent">#}
+        {#<div class="caption border-color-5">#}
+            {#<h3><a href="course-single-left-sidebar.html" class="color-5">{{ j.module }}</a></h3>#}
+            {#<ul class="list-unstyled">#}
+                {#<li><i class="fa fa-calendar-o" aria-hidden="true"></i>{{ j.matiere }}</li>#}
+                {#<li><i class="fa fa-clock-o" aria-hidden="true"></i>{{ j.datePub|date('d/M/Y') }}</li>#}
+            {#</ul>#}
+            {#<ul class="list-inline btn-purple">#}
+                {#<li><a href="cart-page.html" class="btn btn-primary "><i class="fa fa-shopping-basket " aria-hidden="true"></i>Télécharger</a></li>#}
+                {#<li><a href="course-single-left-sidebar.html" class="btn btn-link"><i class="fa fa-angle-double-right" aria-hidden="true"></i> More</a></li>#}
+                {#<li><a href="{{ path('revision_mod',{'id':j.id}) }}" class="btn btn-primary">Modifier</a></li>#}
+                {#<li><a href="{{ path('revision_supp',{'id':j.id}) }}" class="btn btn-primary">Supprimer</a></li>#}
+
+            {#</ul>#}
+        {#</div>#}
+    {#</div>#}
+{#</div>#}
+    {#{% endfor %}#}
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+    <section class="page-title page-title-2 image-bg overlay">
+        <div class="background-image-holder fadeIn" style="background-image: url('{{ asset('uploads/images/cover12.jpg') }}');">
+            <img alt="Background Image" class="background-image" src="{{ asset('uploads/images/is.jpg') }}" style="display: none;">
+
+
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="uppercase mb8">Consulter cours</h2>
+                </div>
+                <div class="col-md-6 text-right">
+                    <ol class="breadcrumb breadcrumb-2">
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Revison</a>
+                        </li>
+                        <li class="active">Consulter cours</li>
+                    </ol>
+                </div>
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+    <div class="input-group searchArea">
+        <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
+        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Search something..." id="recherche">
+        <button type="submit" class="input-group-addon button bg-color-5" id="basic-addon21">Search</button>
+    </div>
+</div>
+    </div>
+
+
+
+    <section class="bg-secondary">
+
+        <div class="container">
+
+            <div class="row">
+
+            <div class="col-md-12">
+                {#<div class="r">#}
+                <div class="row masonry-loader fadeOut">
+
+                    <div class="col-sm-12 text-center">
+
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+
+                <div class="row masonry masonryFlyIn mb40 fadeIn" style="position: relative; height: 1467.67px;">
+
+                    {#<div class="col-sm-6 post-snippet masonry-item fadeIn" style="position: absolute; left: 0px; top: 0px;">#}
+                        {% for j in courss %}
+                            <div class="col-md-4">
+                        <a href="#">
+                            <img alt="Post Image" src="{{ asset('bundles/template/img/cover16.jpg') }}">
+                        </a>
+                        {#{% for j in courss %}#}
+                        <div class="inner">
+                            <a href="#">
+                                <h5 class="mb0">Le module :{{ j.module }}</h5>
+                                <span class="inline-block mb16">La date du publication : {{ j.datePub|date('d/M/Y') }}</span>
+                            </a>
+                            <hr>
+                            <p> La matiére: {{ j.matiere }}
+                            </p>
+                            <p>Le fichier PDF : {{ j.fichier}}
+                            </p>
+
+                            <ul class="tags pull-right">
+                                <li>
+                                <a href="{{ path('revision_mod',{'id':j.id}) }}" class="btn btn-primary">Modifier</a>
+
+                                </li>
+                                <li>
+                                <a href="{{ path('revision_supp',{'id':j.id}) }}" class="btn btn-primary">Supprimer</a>
+
+                                </li>
+                            </ul>
+                            {#{% endfor %}#}
+                        </div>
+                            </div>
+                        {% endfor %}
+                    {#</div>#}
+                    <!--end of snippet-->
+
+                </div>
+                <!--end of widget-->
+            </div>
+            <!--end of sidebar-->
+
+            </div>
+        </div>
+        <!--end of container-->
+    </section>
+
+
+
+    <div class="r"></div>
+
+
+    <script src="{{ asset ('jquery-3.2.1.min.js') }}">
+
+    </script>
+
+
+    <script>
+
+
+        $(document).ready(function () {
+            $('#recherche').on('keyup', function () {
+                $search = $(this).val();
+                $.ajax({
+                    url: "{{ path('_ajax') }}",
+                    data: {'search': $search }
+                }).done(function (response) {
+                    $('.r').html(response)
+                }).catch(function (err) {
+
+                });
+            });
+        });
+
+
+    </script>
+
+
+
+
+
+
+{% endblock %}

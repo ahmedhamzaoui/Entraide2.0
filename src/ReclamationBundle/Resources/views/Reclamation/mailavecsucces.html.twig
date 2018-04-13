@@ -1,0 +1,44 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Mail envoyé{% endblock %}
+
+{% block body %}
+    <body class="scroll-assist">
+
+    <div class="main-container">
+        <section class="page-title page-title-2 image-bg overlay parallax">
+            <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 0px, 0px); background: url({{ asset('img/mail.jpg' ) }}); top: -100px;">
+                <img alt="Background Image" class="background-image" src="{{ asset('img/mail.jpg' ) }}" style="display: none;">
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2 class="uppercase mb8">C'est bon!</h2>
+                        <p class="lead mb0">Votre mail a été envoyé avec succés</p>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <ol class="breadcrumb breadcrumb-2">
+                            <li>
+                                <a href="{{ path('acceuilRec') }}">Home</a>
+                            </li>
+                            <li>
+                                <a href="#">Pages</a>
+                            </li>
+                            <li class="active">Plan A Project</li>
+                        </ol>
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </section>
+
+
+        <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/jrdbn46n';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+
+    </div>
+    </body>
+
+    <!-- Mirrored from foundry.mediumra.re/elements-form-inputs.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 19 Mar 2018 11:16:14 GMT -->
+    </html>
+{% endblock %}

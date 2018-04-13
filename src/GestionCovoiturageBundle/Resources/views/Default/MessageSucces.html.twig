@@ -1,0 +1,27 @@
+
+{% extends "::base.html.twig" %}
+{% block body %}
+
+    <section class="page-title page-title-2 image-bg overlay parallax">
+        <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 0px, 0px); background: url(&quot;bundles/template/img/Succes.jpg&quot;); top: -100px;">
+            <img alt="Background Image" class="background-image" src="{{ asset('bundles/template/img/Succes.jpg') }}" style="display: none;">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="uppercase mb8">Succes</h2>
+                    <p class="lead mb0">Le conducteur a été informé avec succes</p>
+                </div>
+                <div class="col-md-6 text-right">
+                    <ol class="breadcrumb breadcrumb-2">
+                       <a href="{{ path('acceuil_cov') }} " class="btn">Menu principal</a>
+                    </ol>
+                </div>
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+
+
+{% endblock body %}

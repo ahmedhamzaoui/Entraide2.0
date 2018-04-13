@@ -1,0 +1,49 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+<body class="scroll-assist">
+<div class="nav-container">
+    <a id="top"></a>
+</div>
+    </section>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 text-center">
+            <h4 class="uppercase mb16">Votre Réservation</h4>
+            <p class="lead mb80">
+                Vous pouvez Annuler votre Réservation !
+            </p>
+        </div>
+    </div>
+    {% for reser in ress %}
+    <section>
+        <div class="container">
+
+            <div class="row mb64 mb-xs-0">
+                <div class="col-sm-6">
+                    <ul class="lead" data-bullet="ti-check-box">
+
+                            <li>
+                            <i class="ti-check-box"></i>
+                                Vous avez réservé  {{ reser.nbplace }} places à partir de :{{ reser.dateres | date}}
+                        </li>
+                        <li>
+                            <i class="ti-check-box"></i>
+                            Votre réservation est effectué à cette offre de : {{ reser.idcolocation.typelog}} à {{ reser.idcolocation.adresse }}
+                        </li>
+                        <li>
+                            <i class="ti-check-box"></i>
+                            Votre réservation est enregitrée à la date : {{ reser.expiredate |date }}
+                        </li>
+                        <td><a href="{{ path('reservation_annuler',{'id':reser.id}) }}">Annuler</a></td>
+
+                    </ul>
+                </div>
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+        {% endfor %}
+
+    </section>
+</div>
+</body>
+{% endblock %}

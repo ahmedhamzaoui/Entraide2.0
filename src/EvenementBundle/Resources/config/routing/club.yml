@@ -1,0 +1,30 @@
+club_index:
+    path:     /
+    defaults: { _controller: "EvenementBundle:Club:index" }
+    methods:  GET
+
+club_show:
+    path:     /{idclub}/show
+    defaults: { _controller: "EvenementBundle:Club:show" }
+    methods:  GET
+
+club_new:
+    path:     /new
+    defaults: { _controller: "EvenementBundle:Club:new" }
+    methods:  [GET, POST]
+
+club_edit:
+    path:     /{idclub}/edit
+    defaults: { _controller: "EvenementBundle:Club:edit" }
+    methods:  [GET, POST]
+
+club_delete:
+    path:     /{idclub}/delete
+    defaults: { _controller: "EvenementBundle:Club:delete" }
+    methods:  DELETE
+
+
+club_part:
+    path:     /{idClub}/part
+    defaults: { _controller: "EvenementBundle:Club:part" }
+    methods:  [GET, POST]

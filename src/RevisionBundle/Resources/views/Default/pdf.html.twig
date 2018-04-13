@@ -1,0 +1,25 @@
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <table class="table-responsive" border="1">
+        <tr>
+            <td>nom</td>
+            <td>salle</td>
+            <td>date debut</td>
+            <td>date fin</td>
+            <td>Etat de reservation</td>
+
+        </tr>
+        {% for val in valide %}
+            <tr>
+                <td>{{ val.user }}</td>
+                <td>{{ val.salle }}</td>
+                <td>{{ val.dateTime1|date }}</td>
+                <td>{{ val.dateTime2|date }}</td>
+                <td>votre reservation est accepté</td>
+            </tr>
+
+        {% endfor %}
+    </table>

@@ -1,0 +1,546 @@
+{% extends "::base.html.twig" %}
+{% block javascripts %}
+
+    <section class="page-title page-title-2 image-bg overlay">
+        <div class="background-image-holder fadeIn" style="background-image: url('{{ asset('uploads/images/cover12.jpg') }}');">
+            <img alt="Background Image" class="background-image" src="{{ asset('uploads/images/is.jpg') }}" style="display: none;">
+
+
+        </div>
+
+
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="uppercase mb8">Ajouter cours</h2>
+                </div>
+                <div class="col-md-6 text-right">
+                    <ol class="breadcrumb breadcrumb-2">
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Revison</a>
+                        </li>
+                        <li class="active">Ajouter cours</li>
+                    </ol>
+                </div>
+        </div>
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+
+
+
+
+
+<div class="masonry-item ">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-sm-6">
+           <center> <h4 class="uppercase mb16">Ajout Cours</h4></center>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="homeContactContent">
+            {{ form_start(form) }}
+
+            <div class="row">
+                <div calss="col-sm-12">
+                <div class="col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <i class="fa fa-user"></i>
+                        {{ form_widget(form.matiere,{'attr':{'type':'textarea','class':'form-control border-color-1','placeholder':'Name of the Course'}}) }}
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <i class="fa fa-user"></i>
+                        {{ form_widget(form.module,{'attr':{'type':'textarea','class':'form-control border-color-4','placeholder':'Name of the Course'}}) }}
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <i class="fa fa-user"></i>
+                        {{ form_widget(form.fichier,{'attr':{'type':'textarea','class':'form-control border-color-2'}}) }}
+                    </div>
+                </div>
+
+            {#{{ form_widget(form.matiere,{'attr':{'type':'textarea','class':'form-control border-color-1','placeholder':'La matiére'}}) }}#}
+            {#{{ form_widget(form.module,{'attr':{'type':'textarea','class':'form-control border-color-2','placeholder':'Le module'}}) }}#}
+            {#{{ form_widget(form.fichier,{'attr':{'type':'textarea','class':'form-control border-color-3'}}) }}#}
+{% if is_granted("ROLE_PROFESSEUR") %}
+                    <div class="col-xs-12">
+                        <div class="formBtnArea">
+                            {{ form_widget(form.ajouter,{'attr':{'class':'btn btn-danger'}}) }}
+                        </div>
+                    </div>
+    {% endif %}
+            </div>
+            {{ form_end(form) }}
+            </div>
+        </div>
+            </div>
+            </div>
+            </div>
+        </div>
+    </div></div></div></div>
+
+
+        {#<h1>Welcome to the Modele:create page</h1>#}
+        {#<fieldset style="width: 50%;">#}
+            {#<table>#}
+                {#{{ form_start(form) }}#}
+                {#<tr>#}
+                    {#<td>Matiere</td>#}
+                    {#<td>{{ form_widget(form.matiere) }}</td>#}
+                {#</tr>#}
+
+                {#<tr>#}
+                    {#<td>Module</td>#}
+                    {#<td>{{ form_widget(form.module) }}</td>#}
+                {#</tr>#}
+                {#<tr>#}
+                    {#<td>Date de publication</td>#}
+                    {#<td>{{ form_widget(form.datePub)|date('Y-m-d') }}</td>#}
+                {#</tr>#}
+                {#<tr>#}
+                    {#<td>{{ form_widget(form.save) }}</td>#}
+                {#</tr>#}
+            {#</table>#}
+            {#{{ form_end(form) }}#}
+        {#</fieldset>#}
+    {#</center>#}
+    <footer class="footer-1 bg-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <img alt="Logo" class="logo" src="img/logo-light.png">
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h6 class="title">Recent Posts</h6>
+                        <hr>
+                        <ul class="link-list recent-posts">
+                            <li>
+                                <a href="#">Hugging pugs is super trendy</a>
+                                <span class="date">February
+                                            <span class="number">14, 2015</span>
+                                        </span>
+                            </li>
+                            <li>
+                                <a href="#">Spinning vinyl is oh so cool</a>
+                                <span class="date">February
+                                            <span class="number">9, 2015</span>
+                                        </span>
+                            </li>
+                            <li>
+                                <a href="#">Superior theme design by pros</a>
+                                <span class="date">January
+                                            <span class="number">27, 2015</span>
+                                        </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--end of widget-->
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h6 class="title">Latest Updates</h6>
+                        <hr>
+                        <div class="twitter-feed">
+                            <div class="tweets-feed" data-feed-name="mrareweb" id="tweets-1"><ul class="slides"><li><div class="user">
+                                            <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank"><img data-scribe="element:avatar" data-src-2x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png" alt="" data-src-1x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_normal.png" src="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png"></a>
+
+
+
+                                            <div data-scribe="component:author">
+                                                <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank">
+                                                    <div>
+      <span>
+        <span title="Medium Rare" data-scribe="element:name">Medium Rare</span>
+
+      </span>
+                                                        <span title="@mrareweb" data-scribe="element:screen_name">@mrareweb</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                        </div><p class="tweet">Bootstrap has a new themes marketplace at <a href="https://t.co/ep6fGGXXbb" data-expanded-url="http://themes.getbootstrap.com" target="_blank" title="http://themes.getbootstrap.com" data-scribe="element:url"><span>http://</span><span>themes.getbootstrap.com</span><span>&nbsp;</span></a></p><p class="timePosted"><a href="https://twitter.com/mrareweb/status/966415413813768192">Posted on Feb 21, 2018</a></p><p class="interact"><a href="https://twitter.com/intent/tweet?in_reply_to=966415413813768192" class="twitter_reply_icon" target="_blank">Reply</a><a href="https://twitter.com/intent/retweet?tweet_id=966415413813768192" class="twitter_retweet_icon" target="_blank">Retweet</a><a href="https://twitter.com/intent/favorite?tweet_id=966415413813768192" class="twitter_fav_icon" target="_blank">Favorite</a></p></li><li><div class="user">
+                                            <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank"><img data-scribe="element:avatar" data-src-2x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png" alt="" data-src-1x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_normal.png" src="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png"></a>
+
+
+
+                                            <div data-scribe="component:author">
+                                                <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank">
+                                                    <div>
+      <span>
+        <span title="Medium Rare" data-scribe="element:name">Medium Rare</span>
+
+      </span>
+                                                        <span title="@mrareweb" data-scribe="element:screen_name">@mrareweb</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                        </div><p class="tweet">We're proud to announce the release of Wingman, our first exclusive product on the new Bootstrap Themes marketplace: <a href="https://t.co/ep6fGGXXbb" data-expanded-url="http://themes.getbootstrap.com" target="_blank" title="http://themes.getbootstrap.com" data-scribe="element:url"><span>http://</span><span>themes.getbootstrap.com</span><span>&nbsp;</span></a> - Check out the live preview of Wingman at <a href="https://t.co/C1odydToOH" data-expanded-url="http://wingman.mediumra.re" target="_blank" title="http://wingman.mediumra.re" data-scribe="element:url"><span>http://</span><span>wingman.mediumra.re</span><span>&nbsp;</span></a></p><p class="timePosted"><a href="https://twitter.com/mrareweb/status/966414988628738048">Posted on Feb 21, 2018</a></p><p class="interact"><a href="https://twitter.com/intent/tweet?in_reply_to=966414988628738048" class="twitter_reply_icon" target="_blank">Reply</a><a href="https://twitter.com/intent/retweet?tweet_id=966414988628738048" class="twitter_retweet_icon" target="_blank">Retweet</a><a href="https://twitter.com/intent/favorite?tweet_id=966414988628738048" class="twitter_fav_icon" target="_blank">Favorite</a></p></li><li><div class="user">
+                                            <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank"><img data-scribe="element:avatar" data-src-2x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png" alt="" data-src-1x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_normal.png" src="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png"></a>
+
+
+
+                                            <div data-scribe="component:author">
+                                                <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank">
+                                                    <div>
+      <span>
+        <span title="Medium Rare" data-scribe="element:name">Medium Rare</span>
+
+      </span>
+                                                        <span title="@mrareweb" data-scribe="element:screen_name">@mrareweb</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                        </div><p class="tweet">Stack HTML Template has been updated to v2.0.0 to support Bootstrap 4!  Full details in changelog at <a href="https://t.co/F6uZ5OAvjS" data-expanded-url="http://mmra.re/p" target="_blank" title="http://mmra.re/p" data-scribe="element:url"><span>http://</span><span>mmra.re/p</span><span>&nbsp;</span></a></p><p class="timePosted"><a href="https://twitter.com/mrareweb/status/961839401855680513">Posted on Feb 8, 2018</a></p><p class="interact"><a href="https://twitter.com/intent/tweet?in_reply_to=961839401855680513" class="twitter_reply_icon" target="_blank">Reply</a><a href="https://twitter.com/intent/retweet?tweet_id=961839401855680513" class="twitter_retweet_icon" target="_blank">Retweet</a><a href="https://twitter.com/intent/favorite?tweet_id=961839401855680513" class="twitter_fav_icon" target="_blank">Favorite</a></p></li><li><div class="user">
+                                            <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank"><img data-scribe="element:avatar" data-src-2x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png" alt="" data-src-1x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_normal.png" src="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png"></a>
+
+
+
+                                            <div data-scribe="component:author">
+                                                <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank">
+                                                    <div>
+      <span>
+        <span title="Medium Rare" data-scribe="element:name">Medium Rare</span>
+
+      </span>
+                                                        <span title="@mrareweb" data-scribe="element:screen_name">@mrareweb</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                        </div><p class="tweet">Thanks to everyone who participated in the recent sales - both Black Friday and Cyber Monday were a huge success!</p><p class="timePosted"><a href="https://twitter.com/mrareweb/status/938236719970660352">Posted on Dec 5, 2017</a></p><p class="interact"><a href="https://twitter.com/intent/tweet?in_reply_to=938236719970660352" class="twitter_reply_icon" target="_blank">Reply</a><a href="https://twitter.com/intent/retweet?tweet_id=938236719970660352" class="twitter_retweet_icon" target="_blank">Retweet</a><a href="https://twitter.com/intent/favorite?tweet_id=938236719970660352" class="twitter_fav_icon" target="_blank">Favorite</a></p></li><li><div class="user">
+                                            <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank"><img data-scribe="element:avatar" data-src-2x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png" alt="" data-src-1x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_normal.png" src="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png"></a>
+
+
+
+                                            <div data-scribe="component:author">
+                                                <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank">
+                                                    <div>
+      <span>
+        <span title="Medium Rare" data-scribe="element:name">Medium Rare</span>
+
+      </span>
+                                                        <span title="@mrareweb" data-scribe="element:screen_name">@mrareweb</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                        </div><p class="tweet">Hurry! Last chance to get amazing deals on some of the best items sold on Envato Market <a href="https://twitter.com/hashtag/envatosale?src=hash" data-scribe="element:hashtag" target="_blank"><span>#</span><span>envatosale</span></a> <a href="https://t.co/ZHoE4CEtJY" data-expanded-url="http://oal.lu/G8Mps" target="_blank" title="http://oal.lu/G8Mps" data-scribe="element:url"><span>http://</span><span>oal.lu/G8Mps</span><span>&nbsp;</span></a></p><p class="timePosted"><a href="https://twitter.com/mrareweb/status/935410460161167360">Posted on Nov 27, 2017</a></p><p class="interact"><a href="https://twitter.com/intent/tweet?in_reply_to=935410460161167360" class="twitter_reply_icon" target="_blank">Reply</a><a href="https://twitter.com/intent/retweet?tweet_id=935410460161167360" class="twitter_retweet_icon" target="_blank">Retweet</a><a href="https://twitter.com/intent/favorite?tweet_id=935410460161167360" class="twitter_fav_icon" target="_blank">Favorite</a></p></li><li><div class="user">
+                                            <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank"><img data-scribe="element:avatar" data-src-2x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png" alt="" data-src-1x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_normal.png" src="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png"></a>
+
+
+
+                                            <div data-scribe="component:author">
+                                                <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank">
+                                                    <div>
+      <span>
+        <span title="Medium Rare" data-scribe="element:name">Medium Rare</span>
+
+      </span>
+                                                        <span title="@mrareweb" data-scribe="element:screen_name">@mrareweb</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                        </div><p class="tweet">My item is currently on sale on <a href="https://twitter.com/envato" data-mentioned-user-id="16582191" data-scribe="element:mention" target="_blank"><span>@</span><span>envato</span></a>! See all items you can grab <a href="https://twitter.com/hashtag/envatosale?src=hash" data-scribe="element:hashtag" target="_blank"><span>#</span><span>envatosale</span></a> <a href="https://t.co/RufqyZKcYB" data-expanded-url="http://oal.lu/nlNmp" target="_blank" title="http://oal.lu/nlNmp" data-scribe="element:url"><span>http://</span><span>oal.lu/nlNmp</span><span>&nbsp;</span></a></p><p class="timePosted"><a href="https://twitter.com/mrareweb/status/932828473000898566">Posted on Nov 20, 2017</a></p><p class="interact"><a href="https://twitter.com/intent/tweet?in_reply_to=932828473000898566" class="twitter_reply_icon" target="_blank">Reply</a><a href="https://twitter.com/intent/retweet?tweet_id=932828473000898566" class="twitter_retweet_icon" target="_blank">Retweet</a><a href="https://twitter.com/intent/favorite?tweet_id=932828473000898566" class="twitter_fav_icon" target="_blank">Favorite</a></p></li><li><div class="user">
+                                            <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank"><img data-scribe="element:avatar" data-src-2x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png" alt="" data-src-1x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_normal.png" src="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png"></a>
+
+
+
+                                            <div data-scribe="component:author">
+                                                <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank">
+                                                    <div>
+      <span>
+        <span title="Medium Rare" data-scribe="element:name">Medium Rare</span>
+
+      </span>
+                                                        <span title="@mrareweb" data-scribe="element:screen_name">@mrareweb</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                        </div><p class="tweet">Stack 1.5.1 has a new accommodation layout.  Check it out at <a href="https://t.co/HICQHXE8Gh" data-expanded-url="http://trystack.mediumra.re/home-accommodation.html" target="_blank" title="http://trystack.mediumra.re/home-accommodation.html" data-scribe="element:url"><span>http://</span><span>trystack.mediumra.re/home-accommoda</span><span>tion.html&nbsp;</span>…</a></p><p class="timePosted"><a href="https://twitter.com/mrareweb/status/923444266155720704">Posted on Oct 25, 2017</a></p><p class="interact"><a href="https://twitter.com/intent/tweet?in_reply_to=923444266155720704" class="twitter_reply_icon" target="_blank">Reply</a><a href="https://twitter.com/intent/retweet?tweet_id=923444266155720704" class="twitter_retweet_icon" target="_blank">Retweet</a><a href="https://twitter.com/intent/favorite?tweet_id=923444266155720704" class="twitter_fav_icon" target="_blank">Favorite</a></p></li><li><div class="user">
+                                            <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank"><img data-scribe="element:avatar" data-src-2x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png" alt="" data-src-1x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_normal.png" src="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png"></a>
+
+
+
+                                            <div data-scribe="component:author">
+                                                <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank">
+                                                    <div>
+      <span>
+        <span title="Medium Rare" data-scribe="element:name">Medium Rare</span>
+
+      </span>
+                                                        <span title="@mrareweb" data-scribe="element:screen_name">@mrareweb</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                        </div><p class="tweet">Stack 1.5.0 is huge - we've pushed a big change to how plugin options can be set globally - read more in the docs <a href="https://t.co/I0VelsVP8s" data-expanded-url="http://mmra.re/10" target="_blank" title="http://mmra.re/10" data-scribe="element:url"><span>http://</span><span>mmra.re/10</span><span>&nbsp;</span></a></p><p class="timePosted"><a href="https://twitter.com/mrareweb/status/904989294548328448">Posted on Sep 5, 2017</a></p><p class="interact"><a href="https://twitter.com/intent/tweet?in_reply_to=904989294548328448" class="twitter_reply_icon" target="_blank">Reply</a><a href="https://twitter.com/intent/retweet?tweet_id=904989294548328448" class="twitter_retweet_icon" target="_blank">Retweet</a><a href="https://twitter.com/intent/favorite?tweet_id=904989294548328448" class="twitter_fav_icon" target="_blank">Favorite</a></p></li><li><div class="user">
+                                            <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank"><img data-scribe="element:avatar" data-src-2x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png" alt="" data-src-1x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_normal.png" src="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png"></a>
+
+
+
+                                            <div data-scribe="component:author">
+                                                <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank">
+                                                    <div>
+      <span>
+        <span title="Medium Rare" data-scribe="element:name">Medium Rare</span>
+
+      </span>
+                                                        <span title="@mrareweb" data-scribe="element:screen_name">@mrareweb</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                        </div><p class="tweet">Stack 1.4.5 gets updates including horizontal progress bars, events for modals/notifications &amp; more. Buy now on TF <a href="https://t.co/F6uZ5OAvjS" data-expanded-url="http://mmra.re/p" target="_blank" title="http://mmra.re/p" data-scribe="element:url"><span>http://</span><span>mmra.re/p</span><span>&nbsp;</span></a></p><p class="timePosted"><a href="https://twitter.com/mrareweb/status/893378290500554753">Posted on Aug 3, 2017</a></p><p class="interact"><a href="https://twitter.com/intent/tweet?in_reply_to=893378290500554753" class="twitter_reply_icon" target="_blank">Reply</a><a href="https://twitter.com/intent/retweet?tweet_id=893378290500554753" class="twitter_retweet_icon" target="_blank">Retweet</a><a href="https://twitter.com/intent/favorite?tweet_id=893378290500554753" class="twitter_fav_icon" target="_blank">Favorite</a></p></li><li><div class="user">
+                                            <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank"><img data-scribe="element:avatar" data-src-2x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png" alt="" data-src-1x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_normal.png" src="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png"></a>
+
+
+
+                                            <div data-scribe="component:author">
+                                                <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank">
+                                                    <div>
+      <span>
+        <span title="Medium Rare" data-scribe="element:name">Medium Rare</span>
+
+      </span>
+                                                        <span title="@mrareweb" data-scribe="element:screen_name">@mrareweb</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                        </div><p class="tweet">Send your visitors a pretty HTML confirmation message with Stack 1.4.4 -also now save your form submissions to CSV. <a href="https://t.co/F6uZ5OAvjS" data-expanded-url="http://mmra.re/p" target="_blank" title="http://mmra.re/p" data-scribe="element:url"><span>http://</span><span>mmra.re/p</span><span>&nbsp;</span></a></p><p class="timePosted"><a href="https://twitter.com/mrareweb/status/890833439175221249">Posted on Jul 27, 2017</a></p><p class="interact"><a href="https://twitter.com/intent/tweet?in_reply_to=890833439175221249" class="twitter_reply_icon" target="_blank">Reply</a><a href="https://twitter.com/intent/retweet?tweet_id=890833439175221249" class="twitter_retweet_icon" target="_blank">Retweet</a><a href="https://twitter.com/intent/favorite?tweet_id=890833439175221249" class="twitter_fav_icon" target="_blank">Favorite</a></p></li><li><div class="user">
+                                            <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank"><img data-scribe="element:avatar" data-src-2x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png" alt="" data-src-1x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_normal.png" src="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png"></a>
+
+
+
+                                            <div data-scribe="component:author">
+                                                <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank">
+                                                    <div>
+      <span>
+        <span title="Medium Rare" data-scribe="element:name">Medium Rare</span>
+
+      </span>
+                                                        <span title="@mrareweb" data-scribe="element:screen_name">@mrareweb</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                        </div><p class="tweet">Parallax is now extended to iOS and Android browsers in Stack 1.4.3 - check it out a the drone photography demo: <a href="https://t.co/phqfMAglq3" data-expanded-url="http://trystack.mediumra.re/home-drone-photography.html" target="_blank" title="http://trystack.mediumra.re/home-drone-photography.html" data-scribe="element:url"><span>http://</span><span>trystack.mediumra.re/home-drone-pho</span><span>tography.html&nbsp;</span>…</a></p><p class="timePosted"><a href="https://twitter.com/mrareweb/status/888304288862158848">Posted on Jul 20, 2017</a></p><p class="interact"><a href="https://twitter.com/intent/tweet?in_reply_to=888304288862158848" class="twitter_reply_icon" target="_blank">Reply</a><a href="https://twitter.com/intent/retweet?tweet_id=888304288862158848" class="twitter_retweet_icon" target="_blank">Retweet</a><a href="https://twitter.com/intent/favorite?tweet_id=888304288862158848" class="twitter_fav_icon" target="_blank">Favorite</a></p></li><li><div class="user">
+                                            <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank"><img data-scribe="element:avatar" data-src-2x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png" alt="" data-src-1x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_normal.png" src="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png"></a>
+
+
+
+                                            <div data-scribe="component:author">
+                                                <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank">
+                                                    <div>
+      <span>
+        <span title="Medium Rare" data-scribe="element:name">Medium Rare</span>
+
+      </span>
+                                                        <span title="@mrareweb" data-scribe="element:screen_name">@mrareweb</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                        </div><p class="tweet">Celebrating our entering the top 50 Authors on <a href="https://twitter.com/hashtag/Themforest?src=hash" data-scribe="element:hashtag" target="_blank"><span>#</span><span>Themforest</span></a> we're offering Stack HTML at a sale price of $10 - buy at <a href="https://t.co/F6uZ5OAvjS" data-expanded-url="http://mmra.re/p" target="_blank" title="http://mmra.re/p" data-scribe="element:url"><span>http://</span><span>mmra.re/p</span><span>&nbsp;</span></a></p><p class="timePosted"><a href="https://twitter.com/mrareweb/status/884941701642543104">Posted on Jul 11, 2017</a></p><p class="interact"><a href="https://twitter.com/intent/tweet?in_reply_to=884941701642543104" class="twitter_reply_icon" target="_blank">Reply</a><a href="https://twitter.com/intent/retweet?tweet_id=884941701642543104" class="twitter_retweet_icon" target="_blank">Retweet</a><a href="https://twitter.com/intent/favorite?tweet_id=884941701642543104" class="twitter_fav_icon" target="_blank">Favorite</a></p></li><li><div class="user">
+                                            <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank"><img data-scribe="element:avatar" data-src-2x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png" alt="" data-src-1x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_normal.png" src="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png"></a>
+
+
+
+                                            <div data-scribe="component:author">
+                                                <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank">
+                                                    <div>
+      <span>
+        <span title="Medium Rare" data-scribe="element:name">Medium Rare</span>
+
+      </span>
+                                                        <span title="@mrareweb" data-scribe="element:screen_name">@mrareweb</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                        </div><p class="tweet">Looking for a stylish <a href="https://twitter.com/webflowapp" data-mentioned-user-id="403930194" data-scribe="element:mention" target="_blank"><span>@</span><span>webflowapp</span></a> CMS template for your startup? Meet Uptime, a modular landing page template <a href="https://t.co/993Cj6ECyh" data-expanded-url="http://mmra.re/z" target="_blank" title="http://mmra.re/z" data-scribe="element:url"><span>http://</span><span>mmra.re/z</span><span>&nbsp;</span></a></p><p class="timePosted"><a href="https://twitter.com/mrareweb/status/882751145730383873">Posted on Jul 5, 2017</a></p><p class="interact"><a href="https://twitter.com/intent/tweet?in_reply_to=882751145730383873" class="twitter_reply_icon" target="_blank">Reply</a><a href="https://twitter.com/intent/retweet?tweet_id=882751145730383873" class="twitter_retweet_icon" target="_blank">Retweet</a><a href="https://twitter.com/intent/favorite?tweet_id=882751145730383873" class="twitter_fav_icon" target="_blank">Favorite</a></p></li><li><div class="user">
+                                            <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank"><img data-scribe="element:avatar" data-src-2x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png" alt="" data-src-1x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_normal.png" src="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png"></a>
+
+
+
+                                            <div data-scribe="component:author">
+                                                <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank">
+                                                    <div>
+      <span>
+        <span title="Medium Rare" data-scribe="element:name">Medium Rare</span>
+
+      </span>
+                                                        <span title="@mrareweb" data-scribe="element:screen_name">@mrareweb</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                        </div><p class="tweet">Now is a great time to get a stellar <a href="https://twitter.com/hashtag/WordPress?src=hash" data-scribe="element:hashtag" target="_blank"><span>#</span><span>WordPress</span></a> theme at a very reasonable price. Stack for WordPress - only $39 for a limited time!</p><p class="timePosted"><a href="https://twitter.com/mrareweb/status/877043203089805312">Posted on Jun 19, 2017</a></p><p class="interact"><a href="https://twitter.com/intent/tweet?in_reply_to=877043203089805312" class="twitter_reply_icon" target="_blank">Reply</a><a href="https://twitter.com/intent/retweet?tweet_id=877043203089805312" class="twitter_retweet_icon" target="_blank">Retweet</a><a href="https://twitter.com/intent/favorite?tweet_id=877043203089805312" class="twitter_fav_icon" target="_blank">Favorite</a></p></li><li><div class="user">
+                                            <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank"><img data-scribe="element:avatar" data-src-2x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png" alt="" data-src-1x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_normal.png" src="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png"></a>
+
+
+
+                                            <div data-scribe="component:author">
+                                                <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank">
+                                                    <div>
+      <span>
+        <span title="Medium Rare" data-scribe="element:name">Medium Rare</span>
+
+      </span>
+                                                        <span title="@mrareweb" data-scribe="element:screen_name">@mrareweb</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                        </div><p class="tweet">Stack makes Google reCAPTCHA super easy - grab 1.3.8 to get the latest features and fixes. See it in action here: <a href="https://t.co/xMe8YlZ198" data-expanded-url="http://trystack.mediumra.re/page-contact-map-1.html" target="_blank" title="http://trystack.mediumra.re/page-contact-map-1.html" data-scribe="element:url"><span>http://</span><span>trystack.mediumra.re/page-contact-m</span><span>ap-1.html&nbsp;</span>…</a></p><p class="timePosted"><a href="https://twitter.com/mrareweb/status/868013273412534272">Posted on May 25, 2017</a></p><p class="interact"><a href="https://twitter.com/intent/tweet?in_reply_to=868013273412534272" class="twitter_reply_icon" target="_blank">Reply</a><a href="https://twitter.com/intent/retweet?tweet_id=868013273412534272" class="twitter_retweet_icon" target="_blank">Retweet</a><a href="https://twitter.com/intent/favorite?tweet_id=868013273412534272" class="twitter_fav_icon" target="_blank">Favorite</a></p></li><li><div class="user">
+                                            <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank"><img data-scribe="element:avatar" data-src-2x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png" alt="" data-src-1x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_normal.png" src="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png"></a>
+
+
+
+                                            <div data-scribe="component:author">
+                                                <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank">
+                                                    <div>
+      <span>
+        <span title="Medium Rare" data-scribe="element:name">Medium Rare</span>
+
+      </span>
+                                                        <span title="@mrareweb" data-scribe="element:screen_name">@mrareweb</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                        </div><p class="tweet">Our new Law Firm template: Maven for <a href="https://twitter.com/webflowapp" data-mentioned-user-id="403930194" data-scribe="element:mention" target="_blank"><span>@</span><span>webflowapp</span></a> Perfect for consultancy businesses who want simple CMS capabilities <a href="https://t.co/xLPHcWkqWO" data-expanded-url="http://mmra.re/y" target="_blank" title="http://mmra.re/y" data-scribe="element:url"><span>http://</span><span>mmra.re/y</span><span>&nbsp;</span></a></p><p class="timePosted"><a href="https://twitter.com/mrareweb/status/863964868780503041">Posted on May 14, 2017</a></p><p class="interact"><a href="https://twitter.com/intent/tweet?in_reply_to=863964868780503041" class="twitter_reply_icon" target="_blank">Reply</a><a href="https://twitter.com/intent/retweet?tweet_id=863964868780503041" class="twitter_retweet_icon" target="_blank">Retweet</a><a href="https://twitter.com/intent/favorite?tweet_id=863964868780503041" class="twitter_fav_icon" target="_blank">Favorite</a></p></li><li><div class="user">
+                                            <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank"><img data-scribe="element:avatar" data-src-2x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png" alt="" data-src-1x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_normal.png" src="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png"></a>
+
+
+
+                                            <div data-scribe="component:author">
+                                                <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank">
+                                                    <div>
+      <span>
+        <span title="Medium Rare" data-scribe="element:name">Medium Rare</span>
+
+      </span>
+                                                        <span title="@mrareweb" data-scribe="element:screen_name">@mrareweb</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                        </div><p class="tweet">Stack 1.3.5 - a huge update for our biggest HTML template, bringing greater performance and stability. Get it now at <a href="https://t.co/F6uZ5OAvjS" data-expanded-url="http://mmra.re/p" target="_blank" title="http://mmra.re/p" data-scribe="element:url"><span>http://</span><span>mmra.re/p</span><span>&nbsp;</span></a></p><p class="timePosted"><a href="https://twitter.com/mrareweb/status/862923066610827265">Posted on May 11, 2017</a></p><p class="interact"><a href="https://twitter.com/intent/tweet?in_reply_to=862923066610827265" class="twitter_reply_icon" target="_blank">Reply</a><a href="https://twitter.com/intent/retweet?tweet_id=862923066610827265" class="twitter_retweet_icon" target="_blank">Retweet</a><a href="https://twitter.com/intent/favorite?tweet_id=862923066610827265" class="twitter_fav_icon" target="_blank">Favorite</a></p></li><li><div class="user">
+                                            <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank"><img data-scribe="element:avatar" data-src-2x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png" alt="" data-src-1x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_normal.png" src="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png"></a>
+
+
+
+                                            <div data-scribe="component:author">
+                                                <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank">
+                                                    <div>
+      <span>
+        <span title="Medium Rare" data-scribe="element:name">Medium Rare</span>
+
+      </span>
+                                                        <span title="@mrareweb" data-scribe="element:screen_name">@mrareweb</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                        </div><p class="tweet">Create a beautiful site in mere moments with <a href="https://twitter.com/hashtag/Variant?src=hash" data-scribe="element:hashtag" target="_blank"><span>#</span><span>Variant</span></a> Page Builder in <a href="https://twitter.com/hashtag/WordPress?src=hash" data-scribe="element:hashtag" target="_blank"><span>#</span><span>WordPress</span></a>. Exclusive to Stack. Test drive at <a href="https://t.co/NfIovXG8de" data-expanded-url="http://mmra.re/u" target="_blank" title="http://mmra.re/u" data-scribe="element:url"><span>http://</span><span>mmra.re/u</span><span>&nbsp;</span></a></p><p class="timePosted"><a href="https://twitter.com/mrareweb/status/849772723425296384">Posted on Apr 5, 2017</a></p><p class="interact"><a href="https://twitter.com/intent/tweet?in_reply_to=849772723425296384" class="twitter_reply_icon" target="_blank">Reply</a><a href="https://twitter.com/intent/retweet?tweet_id=849772723425296384" class="twitter_retweet_icon" target="_blank">Retweet</a><a href="https://twitter.com/intent/favorite?tweet_id=849772723425296384" class="twitter_fav_icon" target="_blank">Favorite</a></p></li><li><div class="user">
+                                            <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank"><img data-scribe="element:avatar" data-src-2x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png" alt="" data-src-1x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_normal.png" src="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png"></a>
+
+
+
+                                            <div data-scribe="component:author">
+                                                <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank">
+                                                    <div>
+      <span>
+        <span title="Medium Rare" data-scribe="element:name">Medium Rare</span>
+
+      </span>
+                                                        <span title="@mrareweb" data-scribe="element:screen_name">@mrareweb</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                        </div><p class="tweet"><a href="https://twitter.com/hashtag/variant?src=hash" data-scribe="element:hashtag" target="_blank"><span>#</span><span>variant</span></a> is now in <a href="https://twitter.com/hashtag/wordpress?src=hash" data-scribe="element:hashtag" target="_blank"><span>#</span><span>wordpress</span></a>! Introducing Stack WordPress Theme. Only $29US for the first 100 sales at <a href="https://twitter.com/hashtag/themeforest?src=hash" data-scribe="element:hashtag" target="_blank"><span>#</span><span>themeforest</span></a> <a href="https://t.co/pP1YCWSw4e" data-expanded-url="http://mmra.re/s" target="_blank" title="http://mmra.re/s" data-scribe="element:url"><span>http://</span><span>mmra.re/s</span><span>&nbsp;</span></a></p><p class="timePosted"><a href="https://twitter.com/mrareweb/status/849045475143503873">Posted on Apr 3, 2017</a></p><p class="interact"><a href="https://twitter.com/intent/tweet?in_reply_to=849045475143503873" class="twitter_reply_icon" target="_blank">Reply</a><a href="https://twitter.com/intent/retweet?tweet_id=849045475143503873" class="twitter_retweet_icon" target="_blank">Retweet</a><a href="https://twitter.com/intent/favorite?tweet_id=849045475143503873" class="twitter_fav_icon" target="_blank">Favorite</a></p></li><li><div class="user">
+                                            <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank"><img data-scribe="element:avatar" data-src-2x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png" alt="" data-src-1x="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_normal.png" src="https://pbs.twimg.com/profile_images/588890128409473024/6mECDeLZ_bigger.png"></a>
+
+
+
+                                            <div data-scribe="component:author">
+                                                <a data-scribe="element:user_link" href="https://twitter.com/mrareweb" aria-label="Medium Rare (screen name: mrareweb)" target="_blank">
+                                                    <div>
+      <span>
+        <span title="Medium Rare" data-scribe="element:name">Medium Rare</span>
+
+      </span>
+                                                        <span title="@mrareweb" data-scribe="element:screen_name">@mrareweb</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                        </div><p class="tweet">Feel like trying out Variant's new rich text capabilities? Head to <a href="https://t.co/pv7O01FHPM" data-expanded-url="http://mmra.re/q" target="_blank" title="http://mmra.re/q" data-scribe="element:url"><span>http://</span><span>mmra.re/q</span><span>&nbsp;</span></a> and highlight some text </p><p class="timePosted"><a href="https://twitter.com/mrareweb/status/832437749789569024">Posted on Feb 16, 2017</a></p><p class="interact"><a href="https://twitter.com/intent/tweet?in_reply_to=832437749789569024" class="twitter_reply_icon" target="_blank">Reply</a><a href="https://twitter.com/intent/retweet?tweet_id=832437749789569024" class="twitter_retweet_icon" target="_blank">Retweet</a><a href="https://twitter.com/intent/favorite?tweet_id=832437749789569024" class="twitter_fav_icon" target="_blank">Favorite</a></p></li></ul></div>
+                        </div>
+                    </div>
+                    <!--end of widget-->
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h6 class="title">Instagram</h6>
+                        <hr>
+                        <div class="instafeed" data-user-name="mrareweb">
+                            <ul></ul>
+                        </div>
+                    </div>
+                    <!--end of widget-->
+                </div>
+            </div>
+            <!--end of row-->
+            <div class="row">
+                <div class="col-sm-6">
+                    <span class="sub">© Copyright 2016 - Medium Rare</span>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <ul class="list-inline social-list">
+                        <li>
+                            <a href="#">
+                                <i class="ti-twitter-alt"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="ti-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="ti-dribbble"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="ti-vimeo-alt"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--end of container-->
+        <a class="btn btn-sm fade-half back-to-top inner-link" href="#top">Top</a>
+    </footer>
+{% endblock %}

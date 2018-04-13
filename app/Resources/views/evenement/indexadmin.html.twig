@@ -1,0 +1,57 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block body %}
+    <h1>Liste des Evenements</h1>
+    <div class="right-action">
+    </div>
+<br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Date</th>
+                <th>Lieu</th>
+                <th>Photo</th>
+                <th>Club</th>
+                <th>Type Evenement</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for evenement in evenements %}
+            <tr>
+                <td>
+                  <u>  {{ evenement.nom }}</u>
+                </td>
+                <td>
+                    {{ evenement.date|date('F, d Y') }}
+                </td>
+                <td>
+                    {{ evenement.lieu }}
+                </td>
+                <td>
+                    <img src="{{ asset('eventupload/'~evenement.photo) }}" height="50px" width="50px">
+                </td>
+                <td>
+                {% for c in club %}
+                    {% if c.idUser==evenement.idUser %}
+                        {{ c.nom }}
+                    {% endif %}
+                {% endfor %}
+                </td>
+                <td>
+                    {{ evenement.type }}
+                </td>
+
+
+                <td>
+                            <a class="btn btn-lg btn-danger" href="{{ path('e_show', { 'id': evenement.id }) }}">Voir l 'evennement</a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

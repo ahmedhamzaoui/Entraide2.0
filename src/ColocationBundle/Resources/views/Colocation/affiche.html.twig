@@ -1,0 +1,86 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block body %}
+
+    <body class="page-wrapper">
+    <div class="page-wrapper">
+        <h1>Liste Des Annonces de colocation</h1>
+
+
+
+
+        {% for colocation in add %}
+
+                <table>
+                    <tr>
+                        <td>
+                        <img src="{{ asset('uploads/images/' ~ colocation.getPhoto()) }}" width="200px" height="200px">
+                        </td>
+                        <td>
+
+
+
+                    <ul>
+                        <li>
+                            Type de logement:  {{ colocation.typeLog }}
+                        </li>
+                        <li>
+                            Le nombre de chambres totales est : {{ colocation.nbchambre }}
+                        </li>
+                        <li>
+                            Prix :  {{ colocation.prix }}
+                        </li>
+                        <li>
+                            Meublé:  {{ colocation.meuble }}
+                        </li>
+                        <li>
+                            Etage:  {{ colocation.etage }}
+                        </li>
+
+
+                        <li>
+                            Nombre de colocataires habitant dans le logement : {{ colocation.nbpersonne }}
+                        </li>
+                        <li>
+                            Disponible à partir de: {{ colocation.nbpersonne }}
+                        </li>
+                        <li>
+                            Adresse :  {{ colocation.adresse }}
+                        </li>
+                        <li>
+                        <a href="{{ path('valider',{'id':colocation.id}) }}">Valider</a>
+
+                        </li>
+                    </ul>
+                        </td>
+                    </tr>
+                </table>
+
+        {% endfor %}
+    </div>
+    </body>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
