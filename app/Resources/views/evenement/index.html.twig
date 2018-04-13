@@ -31,7 +31,7 @@
     {% if app.user %}
     {% for c in club %}
 {% if app.user==c.idUser %}
-    <div align="right"><a  href="en" class="btn btn-default">Ajouter Evenement</a> </div>
+    <div align="right"><a  href="{{ path('e_new') }}" class="btn btn-default">Ajouter Evenement</a> </div>
 {% endif %}{% endfor %}{% endif %}
         <section class="bg-secondary">
             <div class="container">

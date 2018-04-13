@@ -92,7 +92,7 @@ nomaya_social:
             send:           false
             width:          300
             showFaces:      false
-            layout:         "button"
+            layout:         "button_count"
         twitter:
             url:            null
             locale:         "fr"
