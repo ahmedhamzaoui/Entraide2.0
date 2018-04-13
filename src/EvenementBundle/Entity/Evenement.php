@@ -1,6 +1,7 @@
 <?php
 
 namespace EvenementBundle\Entity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -52,8 +53,9 @@ class Evenement
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="photo", type="string", length=255, nullable=false)
+     * @Assert\Image()
+     * @Assert\NotBlank(message="Ajouter une image")
+     * @ORM\Column(name="photo", type="string", length=20000, nullable=false)
      */
     private $photo;
 
@@ -294,6 +296,10 @@ class Evenement
         $this->payant = $payant;
     }
 
+    public function __toString()
+    {
+       return $this->getNom();
+    }
 
 
 }

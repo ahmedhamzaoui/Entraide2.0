@@ -1,4 +1,104 @@
-{% extends "::base.html.twig" %}
+{% extends is_granted('ROLE_SUPER_ADMIN') ? "baseadmin.html.twig" : "base.html.twig"%}
 {% block body %}
-Hello World!
+    <div class="scroll-assist">
+    <div class="main-container">
+
+    <section class="page-title page-title-4 bg-secondary" style="height: 50px">
+        <div class="container">
+            <div class="row">
+
+
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+    <section class="image-bg bg-dark parallax overlay pt120 pb120">
+        <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 145.5px, 0px); background: url(&quot;{{ asset('bundles/template/img/music1.jpg') }}&quot;);">
+            <img alt="Background Image" class="background-image" src="{{ asset('bundles/template/img/music1.jpg') }}" style="display: none;">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <h2 class="uppercase mb8">Espace evenement</h2>
+                    <a class="btn btn-lg btn-white mb0" href="{{ path('e_index') }}">Consulter</a>
+                </div>
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+        <section class="image-bg bg-dark parallax overlay pt120 pb120">
+            <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 145.5px, 0px); background: url(&quot;{{ asset('bundles/template/img/home12.jpg') }}&quot;);">
+                <img alt="Background Image" class="background-image" src="{{ asset('bundles/template/img/home12.jpg') }}" style="display: none;">
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <h2 class="uppercase mb8">Espace Covoiturage</h2>
+                        <p class="lead mb40"></p>
+                        <a class="btn btn-lg btn-white mb0" href="{{ path('acceuil_cov') }}">Consulter</a>
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </section>
+        <section class="image-bg bg-dark parallax overlay pt120 pb120">
+            <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 145.5px, 0px); background: url(&quot;{{ asset('bundles/template/img/home-2-9.jpg') }}&quot;);">
+                <img alt="Background Image" class="background-image" src="{{ asset('bundles/template/img/home-2-9.jpg') }}" style="display: none;">
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <h2 class="uppercase mb8"> espace collocation </h2>
+                        <a class="btn btn-lg btn-white mb0" href="{{ path('colocation_chercher') }}">Consulter</a>
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </section>
+        <section class="image-bg bg-dark parallax overlay pt120 pb120">
+            <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 145.5px, 0px); background: url(&quot;{{ asset('bundles/template/img/home18.jpg') }}&quot;);">
+                <img alt="Background Image" class="background-image" src="{{ asset('bundles/template/img/home18.jpg') }}" style="display: none;">
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <h2 class="uppercase mb8">espace revision</h2>
+                        <a class="btn btn-lg btn-white mb0" href="{{ path('revision_aff') }}">Consulter</a>
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </section>
+        <section class="image-bg bg-dark parallax overlay pt120 pb120">
+            <div class="background-image-holder fadeIn" style="transform: translate3d(0px, 145.5px, 0px); background: url(&quot;{{ asset('bundles/template/img/blog-single-3.jpg') }}&quot;);">
+                <img alt="Background Image" class="background-image" src="{{ asset('bundles/template/img/blog-single-3.jpg') }}" style="display: none;">
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <h2 class="uppercase mb8">Espace reclamation</h2>
+                        <a class="btn btn-lg btn-white mb0" href="{{ path('affichertoutes') }}">Consulter</a>
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </section>
+        <section class="page-title page-title-4 bg-secondary" style="height: 50px">
+            <div class="container">
+                <div class="row">
+
+
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </section>
+    </div>
+    </div>
 {% endblock body %}

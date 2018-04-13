@@ -3,12 +3,13 @@
 namespace UserBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Utilisateur
  *
- * @ORM\Table(name="utilisateur", indexes={@ORM\Index(name="fk_id", columns={"ID_CLUB"})})
+ * @ORM\Table(name="utilisateur")
  * @ORM\Entity
  */
 class Utilisateur extends BaseUser
@@ -45,10 +46,11 @@ class Utilisateur extends BaseUser
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="Photo", type="string", length=255, nullable=true)
+     * @Assert\Image()
+     * @Assert\NotBlank(message="Ajouter une image")
+     * @ORM\Column(name="photouser", type="string", length=2055)
      */
-    private $photo;
+    private $photouser;
 
     /**
      * @var string
@@ -82,15 +84,6 @@ class Utilisateur extends BaseUser
     }
 
 
-/**
-     * @var \UserBundle\Entity\Club
-     *
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Club")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="ID_CLUB", referencedColumnName="idClub")
-     * })
-     */
-    private $idClub;
 
     /**
      * @return int
@@ -156,21 +149,7 @@ class Utilisateur extends BaseUser
         $this->telephone = $telephone;
     }
 
-    /**
-     * @return string
-     */
-    public function getPhoto()
-    {
-        return $this->photo;
-    }
 
-    /**
-     * @param string $photo
-     */
-    public function setPhoto($photo)
-    {
-        $this->photo = $photo;
-    }
 
     /**
      * @return string
@@ -224,20 +203,25 @@ class Utilisateur extends BaseUser
 
 
     /**
-     * @return Club
+     * @return string
      */
-    public function getIdClub()
+    public function getPhotouser()
     {
-        return $this->idClub;
+        return $this->photouser;
     }
 
     /**
-     * @param Club $idClub
+     * @param string $photouser
      */
-    public function setIdClub($idClub)
+    public function setPhotouser($photouser)
     {
-        $this->idClub = $idClub;
+        $this->photouser = $photouser;
     }
+
+    public function nompernom(){
+        return $this->getNom()." ".$this->getPrenom();
+    }
+
 
 
 }

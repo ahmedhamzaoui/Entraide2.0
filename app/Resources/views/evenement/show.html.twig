@@ -6,8 +6,6 @@
             height: 300px;
             width: 100%;
         }
-        /* Optional: Makes the sample page fill the window. */
-
 
     </style>
 
@@ -16,13 +14,22 @@
 
     <div class="container">
         <div class="row">
+            {% if app.user==evenement.idUser %}
+            <div align="right"><a  href="{{ path('e_edit',{'id':evenement.id}) }}" class="btn btn-default">Modifier l'evenement</a> </div>
+{% endif %}
             <div class="col-md-8 col-sm-8 col-xs-12 block">
                 <div class="panel panel-default">
-                    <img src="{{ asset('bundles/template/img/agency1.jpg') }}" alt="image" class="img-responsive">
+                    <img src="{{ asset('eventupload/'~ evenement.photo)}}" alt="image" class="img-responsive">
                     <div class="panel-body">
                         <h3 class="color-1">{{ evenement.nom|capitalize }}</h3>
                         <p style="width:max-content;  word-wrap: break-word">{{ evenement.description }}</p>
-                    </div>
+<div class="col-md-9"></div>
+<div class="col-md-3">
+                        <p >
+                            {{ socialButtons( { 'facebook': {'locale':'fr_FR', 'send':true}} ) }}
+                        </p>
+</div>
+</div>
 
 
 
@@ -70,7 +77,7 @@
                                             </div>
                                             <div class="media-body iconContent">
                                                 <h4 class="media-heading color-4">  <i class="fa fa-users" style="color: #cd2122" ></i> Nombre disponible</h4>
-                                                <p>Ouvert</p>
+                                                <p>Complet</p>
                                             </div>
                                         </li>
                                     {% else %}
@@ -95,6 +102,30 @@
                                         </div>
                                     </li>
                                 </ul>
+                                <center>
+                                    {% if app.user %}
+                                        {% if res.idE  is not defined %}
+                                            <a class="btn btn-default" href="{{ path('e_res',{'id':evenement.id}) }}">Réserver</a>
+
+                                        {% else %}
+
+
+                                        {% endif %}
+
+
+
+                                        {% if app.user==evenement.idUser %}
+                                            <a class="btn btn-default" href="{{ path('e_liste',{'id':evenement.id}) }}">Liste Participants</a>
+                                        {% endif %}
+
+                                    {% else %}
+                                        <a class="btn btn-default" href="{{ path('fos_user_security_login') }}">Connecter pour réserver</a>
+
+                                    {% endif %}
+
+
+
+                                </center>
                             </div>
                         </div>
 

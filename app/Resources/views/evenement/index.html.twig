@@ -1,51 +1,114 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<br>
-<br>
-<br>
 
-    <div class="container">
-        <div class="row masonry masonryFlyIn mb40 fadeIn" style="position: relative; height: 928.5px;">
-    {% for evenement in evenements %}
-        <div class="col-sm-4 post-snippet masonry-item fadeIn">
-            <a href="#">
-                <img alt="Post Image" src="{{ asset('bundles/template/img/blog-single-3.jpg') }}">
-            </a>
-            <div class="inner">
-                <a href="#">
-                    <h5 class="mb0">{{ evenement.nom|capitalize }}</h5>
-                    <span class="inline-block mb16">{% if evenement.date %}{{ evenement.date|date('Y-m-d') }}{% endif %}</span>
-                </a>
-                <hr>
-                <p>
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
-                </p>
-                <a class="btn btn-sm" href="#">Read More</a>
-                <ul class="tags pull-right">
-                    <li>
-                        <a class="btn btn-sm btn-icon" href="#">
-                            <i class="ti-twitter-alt"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="btn btn-sm btn-icon" href="#">
-                            <i class="ti-facebook"></i>
-                        </a>
-                    </li>
-                </ul>
+
+
+        <section class="page-title page-title-4 " style="height: 120px "  >
+
+            <div class="container">
+                <div class="row ">
+                    <div class="col-md-6">
+                        <h3 class="uppercase mb0">
+                            <i class="ti-pencil-alt"></i>Liste des Evenements:</h3>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <ol class="breadcrumb breadcrumb-2">
+                            <li>
+                                <a href="index.html">Home</a>
+                            </li>
+                            <li>
+                                <a href="#">Evenement</a>
+                            </li>
+                            <li class="active">Liste des Evenements</li>
+                        </ol>
+                    </div>
+                </div>
+                <!--end of row-->
             </div>
-        </div>
-    {% endfor %}
-        <!--end of snippet-->
+            <!--end of container-->
+        </section>
+    {% if app.user %}
+    {% for c in club %}
+{% if app.user==c.idUser %}
+    <div align="right"><a  href="en" class="btn btn-default">Ajouter Evenement</a> </div>
+{% endif %}{% endfor %}{% endif %}
+        <section class="bg-secondary">
+            <div class="container">
+                <div class="col-md-9 col-md-push-3">
 
-        <!--end of snippet-->
-    </div>
-    </div>
+                    <div class="row ">
 
-    <ul>
-        <li>
-            <a href="{{ path('e_new') }}">Create a new evenement</a>
-        </li>
-    </ul>
+
+
+
+                        {% for evenement in evenements if evenement.type=="Externe" %}
+
+                            <div class="col-sm-6 post-snippet masonry-item" style="height:500px">
+                                <a href="{{ path('e_show',{'id':evenement.id}) }}">
+                                    <img alt="Post Image" src="{{ asset('eventupload/'~ evenement.photo)}}"  height="300px" width="100%"/>
+                                </a>
+                                <div class="inner">
+                                    <a href="#">
+                                        <h5 class="mb0">{{ evenement.nom|capitalize }}</h5>
+                                        <span class="inline-block mb16">{% if evenement.date %}{{ evenement.date|date('Y-m-d') }}{% endif %}</span>
+                                    </a>
+                                    <hr>
+                                    <p>
+                                        {{ evenement.description }}
+                                    </p>
+
+                                    <a class="btn btn-sm" href="{{ path('e_show',{'id':evenement.id}) }}">Détail</a>
+                                    <a class="btn btn-sm" href="#">{{ evenement.idUser }}</a>
+
+                                </div>
+                            </div>
+
+                        {% endfor %}
+                        <!--end of snippet-->
+                    </div>
+                    <!--end of row-->
+
+                    <!--end of row-->
+                </div>
+                <!--end of 9 col-->
+                <div class="col-md-3 col-md-pull-9 hidden-sm">
+                    <div class="widget">
+                        <h6 class="title">Rechercher un évenement</h6>
+                        <hr>
+                        <form class="search-form" action="{{ path('e_rech') }}">
+                            <input class="mb0" type="text" name="rech" placeholder="Taper ici" />
+                        </form>
+                    </div>
+                    <!--end of widget-->
+
+                    <!--end of widget-->
+                    <div class="widget">
+                        {% if app.user %}
+                        <h6 class="title">Evenements des Clubs</h6>
+                        <hr>
+                        <ul class="link-list">
+                            {% for c in club %}
+                            <li>
+                                <a href="{{ path('club_show',{'idclub':c.idclub}) }}">{{ c.nom }}</a>
+                            </li>
+                           {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    <!--end of widget-->
+
+                    <!--end of widget-->
+                </div>
+                <!--end of sidebar-->
+            </div>
+            <!--end of container-->
+        </section>
+
+
+    <br>
+<br>
+<br>
+
+
 {% endblock %}

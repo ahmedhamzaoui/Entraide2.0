@@ -1,6 +1,19 @@
 evenement:
     resource: "@EvenementBundle/Resources/config/routing.yml"
     prefix:   /
+gestion_covoiturage:
+    resource: "@GestionCovoiturageBundle/Resources/config/routing.yml"
+    prefix:   /cov
+revision:
+    resource: "@RevisionBundle/Resources/config/routing.yml"
+    prefix:   /revision
+reclamation:
+    resource: "@ReclamationBundle/Resources/config/routing.yml"
+    prefix:   /rec
+colocation:
+    resource: "@ColocationBundle/Resources/config/routing.yml"
+    prefix:   /col
+
 
 user:
     resource: "@UserBundle/Resources/config/routing.yml"

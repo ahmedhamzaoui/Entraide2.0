@@ -19,6 +19,22 @@ class AppKernel extends Kernel
             new UserBundle\UserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new EvenementBundle\EvenementBundle(),
+            new Nomaya\SocialBundle\NomayaSocialBundle(),
+            new GestionCovoiturageBundle\GestionCovoiturageBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new Mgilet\NotificationBundle\MgiletNotificationBundle(),
+            new Vresh\TwilioBundle\VreshTwilioBundle(),
+            new RevisionBundle\RevisionBundle(),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+            new ReclamationBundle\ReclamationBundle(),
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+            new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
+            new ColocationBundle\ColocationBundle(),
+            new blackknight467\StarRatingBundle\StarRatingBundle(),
+            new ScayTrase\SmsDeliveryBundle\SmsDeliveryBundle(),
+            new Knp\Bundle\TimeBundle\KnpTimeBundle(),
+
+
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

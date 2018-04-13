@@ -9,6 +9,12 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
+    event_upload: '%kernel.root_dir%/../web/eventupload'
+    club_upload: '%kernel.root_dir%/../web/clubupload'
+    user_upload: '%kernel.root_dir%/../web/UserUpload'
+    images_directory: 'uploads/images'
+
+
 
 framework:
     #esi: ~
@@ -64,10 +70,11 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: '%mailer_transport%'
-    host: '%mailer_host%'
-    username: '%mailer_user%'
-    password: '%mailer_password%'
+    transport: gmail
+    host: smtp.gmail.com
+    username: nada.ghannem@esprit.tn
+    password: nodnodghannem3a9esprit
+    port: 25
     spool: { type: memory }
 
 fos_user:
@@ -77,3 +84,64 @@ fos_user:
     from_email:
         address: ahmed.hamzaoui@esprit.tn
         sender_name: ahmed
+nomaya_social:
+    buttons:
+        facebook:
+            url:            null
+            locale:         "fr_FR"
+            send:           false
+            width:          300
+            showFaces:      false
+            layout:         "button"
+        twitter:
+            url:            null
+            locale:         "fr"
+            message:        "Je veux partager ça avec vous"
+            text:           "Tweet"
+            via:            "hamzaoui ahmed"
+            tag:            "Esprit_Entr'aide"
+
+    links:
+        facebook:           "http://www.facebook.com/ahmed.hamzaoui"
+    theme:
+
+
+knp_paginator:
+    page_range: 5
+    default_options:
+        page_name: page
+        sort_field_name: sort
+        sort_direction_name: direction
+        distinct: true
+    template:
+        pagination: 'KnpPaginatorBundle:Pagination:sliding.html.twig'
+        sortable: 'KnpPaginatorBundle:Pagination:sortable_link.html.twig'
+
+vresh_twilio:
+    #(Required) Your Account SID from www.twilio.com/user/account
+    sid: 'AC652f43806e3fbc03f53fccd5fdaa9212'
+    #(Required) Your Auth Token from www.twilio.com/user/account
+    authToken: '2b9eb9158e11e5cbaede12228616354b'
+    #(Optional, default: '2010-04-01') Twilio API version
+    version: '2010-04-01'
+    #(Optional, default: 1) Number of times to retry failed requests
+    retryAttempts: 3
+
+knp_snappy:
+    pdf:
+        enabled:    true
+        binary:     "\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\""
+        options:    []
+    image:
+        enabled:    true
+        binary:     /usr/local/bin/wkhtmltoimage #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltoimage.exe\"" for Windows users
+        options:    []
+knp_snappy:
+    temporary_folder: "%kernel.cache_dir%/snappy"
+knp_snappy:
+    process_timeout:
+
+
+cmen_google_charts:
+    version: "current"
+    language: "fr"

@@ -20,6 +20,7 @@ use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Model\UserManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -70,7 +71,16 @@ class RegistrationController extends Controller
             $form->handleRequest($request);
 
             if ($form->isSubmitted()) {
+
                 if ($form->isValid()) {
+                    /**
+                     * @var UploadedFile $file
+                     */
+                    $file = $user->getPhotouser();
+                    $file->move(
+                        $this->getParameter('user_upload'), $file->getClientOriginalName());
+                    $user->setPhotouser($file->getClientOriginalName());
+
                     $event = new FormEvent($form, $request);
                     $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
 
@@ -82,7 +92,6 @@ class RegistrationController extends Controller
                     }
 
                     $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
-
                     return $response;
                 }
 

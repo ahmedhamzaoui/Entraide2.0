@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -24,13 +25,21 @@ class EvenementType extends AbstractType
             ->add('nom',TextType::class)
             ->add('date',DateType::class,array(
                 'widget'=>'single_text',
+                'attr' => array(
+                    'min' => date('Y-m-d')
+                )
 
             ))
             ->add('heure',TimeType::class,array(
                 'widget'=>'single_text'
             ))
             ->add('lieu',TextType::class)
-            ->add('photo',TextType::class)
+            ->add('photo',FileType::class, array(
+                'required' => false,
+                'data_class'=>null,
+
+
+            ))
             ->add('type',ChoiceType::class,array(
                 'choices'=>array(
                     'Interne'=>'Interne',

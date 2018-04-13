@@ -50,6 +50,26 @@
        [type="date"]::-webkit-calendar-picker-indicator {
            opacity: 0;
        }
+
+       .btn-file {
+           position: relative;
+           overflow: hidden;
+       }
+       .btn-file input[type=file] {
+           position: absolute;
+           top: 0;
+           right: 0;
+           min-width: 100%;
+           min-height: 100%;
+           font-size: 100px;
+           text-align: right;
+           filter: alpha(opacity=0);
+           opacity: 0;
+           outline: none;
+           background: white;
+           cursor: inherit;
+           display: inline-block;
+       }
    </style>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
     <link   href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css">
@@ -57,6 +77,7 @@
     <section class="page-title page-title-4 bg-secondary" style="height: 120px">
         <div class="container">
             <div class="row">
+
                 <div class="col-md-6">
                     <h3 class="uppercase mb0">
                         <i class="ti-pencil-alt"></i> Créer Votre Evenement:</h3>
@@ -122,7 +143,7 @@
     </div>
 <br>
     <div class="full-width">
-        {{ form_widget(form.photo,{ 'attr' : {'class':'form-control','id':'photo','placeholder':'photo'}}) }}
+        {{ form_widget(form.photo,{ 'attr' : {'class':'btn btn-default btn-file','id':'photo','placeholder':'photo'}}) }}
         {{form_errors(form.photo)}}
     </div>
 <center>
@@ -143,11 +164,7 @@
     {{ form_end(form) }}
 
 
-    <ul>
-        <li>
-            <a href="{{ path('e_index') }}">Back to the list</a>
-        </li>
-    </ul>
+
 </div>
     <div class="col-md-5" id="map">
     </div>

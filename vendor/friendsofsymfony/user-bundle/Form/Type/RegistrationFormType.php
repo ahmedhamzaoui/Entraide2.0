@@ -14,6 +14,7 @@ namespace FOS\UserBundle\Form\Type;
 use FOS\UserBundle\Util\LegacyFormHelper;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -43,8 +44,10 @@ class RegistrationFormType extends AbstractType
             ->add('nom',TextType::class)
             ->add('prenom',TextType::class)
             ->add('telephone',NumberType::class)
-            ->add('photo',TextType::class)
-            ->add('photo',TextType::class)
+            ->add('photouser',FileType::class,array(
+                'required' => false,
+                'data_class'=>null,
+            ))
             ->add('sexe',ChoiceType::class,array(
                 'choices'=>array(
                     "M"=>"M",

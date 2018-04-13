@@ -27,3 +27,12 @@ e_rech:
     path:     /rech
     defaults: { _controller: "EvenementBundle:Evenement:rech" }
 
+
+e_res:
+    path:     /{id}/res
+    defaults: { _controller: "EvenementBundle:Evenement:res" }
+
+
+e_liste:
+    path:     /{id}/liste
+    defaults: { _controller: "EvenementBundle:Evenement:liste" }

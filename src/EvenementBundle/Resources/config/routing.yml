@@ -6,4 +6,8 @@ evenement_homepage:
     path:     /home
     defaults: { _controller: EvenementBundle:Default:index }
 
+club:
+    resource: "@EvenementBundle/Resources/config/routing/club.yml"
+    prefix:   /club
+
 
